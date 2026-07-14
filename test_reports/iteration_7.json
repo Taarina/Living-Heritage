@@ -1,0 +1,30 @@
+{
+  "summary": "Frontend-only smoke test for images/audio bug. All images load correctly on all pages (0 broken). All 4 audio players on Voices page fail with MediaError code 4 (MEDIA_ELEMENT_ERROR: Format error/src not supported), even though CDN returns HTTP 206 with valid range support. Bug reproduced 100%.",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Homepage: 4/4 images loaded (hero, featured object, 2 collection covers) - naturalWidth > 0 for all",
+    "Collections page: 3/3 images loaded correctly",
+    "Rajwada detail page: 9/9 gallery images loaded (0 broken)",
+    "Lal Bagh detail page: 19/19 gallery images loaded (0 broken)",
+    "Voices page: 3/3 voice portraits loaded (Harishchand Mishra, Ankit Verma, Pushyamitra Bhargava)",
+    "No CORS errors in console for image loading",
+    "No CSP violations observed",
+    "Direct fetch() of audio URL from page returns HTTP 206 (Partial Content), Content-Type: audio/x-m4a, Accept-Ranges: bytes - so CDN and CORS are functional for XHR/fetch"
+  ],
+  "failed": [
+    {
+      "area": "Voices page - Audio playback",
+      "issue": "All 4 <audio> elements fail to load. readyState=0, networkState indicates failure, duration=NaN, MediaError code=4 (MEDIA_ERR_SRC_NOT_SUPPORTED), 'error' event fires immediately on load(). Network shows net::ERR_ABORTED for all 4 .m4a URLs.",
+      "evidence": "Playwright evaluate: {errorEvent: true, error: {code: 4, message: ''}, src: '...l83a0mus_Sheetal Nagar 6...m4a'}. Same for all 4 audio files: gou4uab7_Call with ankit..., 5th6emyg_Sheetal Nagar 4..., l83a0mus_Sheetal Nagar 6..., t41yabvo_Sheetal Nagar 6... Meanwhile fetch() of the same URL from within the page returns 206 OK with audio/x-m4a. Suggests either (a) audio element has crossOrigin attribute but CDN response to media element requests lacks Access-Control-Allow-Origin header (audio subresource CORS is separate from fetch), or (b) browser rejects Content-Type 'audio/x-m4a' (Chromium prefers 'audio/mp4' or 'audio/aac' for .m4a containers).",
+      "priority": "HIGH"
+    }
+  ],
+  "action_items": [
+    "Fix audio playback on /voices - all 4 audio players are broken with MediaError code 4 while images work fine.",
+    "Recommended investigation order: (1) Remove crossOrigin attribute from <audio> tags in VoicesPage.jsx if not needed (audio does not need CORS for simple playback). (2) If crossOrigin is required for the audio API being used, confirm CDN sends Access-Control-Allow-Origin on GET requests to .m4a files with Origin header (test with curl -H 'Origin: https://archival-spaces.preview.emergentagent.com'). (3) Consider re-encoding to .mp3 or serving with Content-Type 'audio/mp4' instead of 'audio/x-m4a'.",
+    "Images are working correctly - no action needed on image loading fix."
+  ],
+  "success_rate": {"backend": "N/A - not tested", "frontend": "images: 100% (38/38 across all pages), audio: 0% (0/4)"},
+  "retest_needed": true,
+  "full_testing_deferred": true
+}
