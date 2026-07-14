@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { loadArchiveData, getVoices } from '@/utils/archiveData';
 import AudioPlayer from '@/components/AudioPlayer';
+import TranscriptModal from '@/components/TranscriptModal';
 import { VOICES } from '@/constants/testIds';
 
 const VoicesPage = () => {
@@ -10,7 +11,15 @@ const VoicesPage = () => {
   useEffect(() => {
     // Load archive data once on mount - imported functions are stable
     loadArchiveData().then(() => {
-      setVoices(getVoices());
+      const allVoices = getVoices();
+      
+      // Group Harishchand Mishra's recordings together
+      const harishchandVoices = allVoices.filter(v => v.name === 'Harishchand Mishra');
+      const otherVoices = allVoices.filter(v => v.name !== 'Harishchand Mishra');
+      
+      // Merge: show Harishchand first with all his recordings, then others
+      const organizedVoices = [...harishchandVoices, ...otherVoices];
+      setVoices(organizedVoices);
       setIsLoaded(true);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -20,111 +29,123 @@ const VoicesPage = () => {
     return null;
   }
   
+  // Group voices by person
+  const voicesByPerson = {};
+  voices.forEach(voice => {
+    if (!voicesByPerson[voice.name]) {
+      voicesByPerson[voice.name] = [];
+    }
+    voicesByPerson[voice.name].push(voice);
+  });
+  
   return (
     <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-12 mb-24">
           <div className="space-y-6">
-            <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
-              Series III
+            <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+              SERIES III
             </p>
-            
             <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
               Voices
             </h1>
           </div>
           
-          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl photo-annotation">
-            Oral histories from caretakers, researchers, and community members who have intimate knowledge of Rajwada and Lal Bagh Palace.
+          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl">
+            Oral histories from caretakers, researchers, and community members who have intimate 
+            knowledge of Rajwada and Lal Bagh Palace.
           </p>
         </div>
         
-        {voices.length > 0 ? (
-          <div className="space-y-16">
-            {voices.map((voice) => (
-              <article
-                key={voice.id}
-                data-testid={VOICES.voiceCard}
-                className="grid md:grid-cols-12 gap-12 border-t border-archive-secondary pt-16"
-              >
-                <div className="md:col-span-4 space-y-6">
-                  <div className="polaroid">
-                    <div className="aspect-[3/4] bg-archive-secondary overflow-hidden relative photo-corners">
-                      <div className="corner-bl"></div>
-                      <div className="corner-br"></div>
-                      <img
-                        src={voice.portrait_url}
-                        alt={voice.name}
-                        className="w-full h-full object-cover vintage-photo"
-                      />
-                      <div className="date-stamp">
-                        2026
-                      </div>
-                    </div>
-                    <div className="polaroid-caption">
-                      {voice.name}
-                    </div>
+        <div className="space-y-16">
+          {Object.entries(voicesByPerson).map(([personName, personVoices]) => (
+            <div key={personName} className="space-y-8">
+              {/* Person Header - show once */}
+              <div className="flex gap-8 items-start border-b border-archive-secondary pb-8">
+                <div className="w-32 h-32 bg-archive-secondary overflow-hidden flex-shrink-0 photo-corners relative">
+                  <img
+                    src={personVoices[0].portrait_url}
+                    alt={personName}
+                    loading="eager"
+                    crossOrigin="anonymous"
+                    className="w-full h-full object-cover vintage-photo"
+                  />
+                </div>
+                <div className="flex-1 space-y-4">
+                  <div>
+                    <h2 className="text-3xl font-serif text-archive-text mb-2">
+                      {personName}
+                    </h2>
+                    <p className="text-sm text-archive-text/70 handwritten">
+                      {personVoices[0].role}
+                    </p>
                   </div>
                   
                   <div className="space-y-3">
-                    <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
-                      {voice.archive_id}
-                    </p>
-                    <h2 className="text-3xl font-serif text-archive-text">
-                      {voice.name}
-                    </h2>
-                    <p className="text-base text-archive-text/70 handwritten">
-                      {voice.role}
+                    <h3 className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                      Biography
+                    </h3>
+                    <p className="text-base text-archive-text/80 leading-relaxed">
+                      {personVoices[0].biography}
                     </p>
                   </div>
                 </div>
-                
-                <div className="md:col-span-8 space-y-8">
-                  <div className="space-y-6 aged-edges p-8">
-                    <p className="text-xs tracking-widest uppercase text-archive-text/60">Biography</p>
-                    <p className="text-base leading-relaxed text-archive-text/90">
-                      {voice.biography}
-                    </p>
+              </div>
+              
+              {/* All recordings for this person */}
+              <div className="space-y-12 pl-0 md:pl-40">
+                {personVoices.map((voice, index) => (
+                  <div 
+                    key={voice.id} 
+                    data-testid={VOICES.voiceCard}
+                    className="vintage-frame p-8 space-y-6 bg-white"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block mb-3">
+                          {voice.archive_id}
+                        </p>
+                        {personVoices.length > 1 && (
+                          <h3 className="text-xl font-serif text-archive-text">
+                            Recording {index + 1}: {voice.archive_id === 'OH-001' ? 'Lal Bagh Palace History' : 'Ahilyabai Holkar & Rajwada'}
+                          </h3>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Audio Player */}
+                    {voice.audio_url && (
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                          Oral History
+                        </h4>
+                        <AudioPlayer audioUrl={voice.audio_url} />
+                      </div>
+                    )}
+                    
+                    {/* Highlighted Quote */}
+                    {voice.highlighted_quote && (
+                      <blockquote className="border-l-2 border-archive-gold pl-6 italic text-archive-text/80">
+                        "{voice.highlighted_quote}"
+                      </blockquote>
+                    )}
+                    
+                    {/* Transcript Modal Button */}
+                    {voice.transcript && (
+                      <div>
+                        <TranscriptModal 
+                          transcript={voice.transcript}
+                          name={voice.name}
+                          archiveId={voice.archive_id}
+                        />
+                      </div>
+                    )}
                   </div>
-                  
-                  {voice.audio_url && (
-                    <div className="space-y-4">
-                      <p className="text-xs tracking-widest uppercase text-archive-text/60">Oral History</p>
-                      <AudioPlayer audioUrl={voice.audio_url} />
-                    </div>
-                  )}
-                  
-                  <div className="space-y-4">
-                    <p className="text-xs tracking-widest uppercase text-archive-text/60">Transcript</p>
-                    <div
-                      data-testid={VOICES.transcript}
-                      className="bg-archive-secondary p-8 text-base leading-relaxed text-archive-text/90 aged-edges"
-                    >
-                      <p>{voice.transcript}</p>
-                    </div>
-                  </div>
-                  
-                  {voice.highlighted_quote && (
-                    <div className="border-l-2 border-archive-gold pl-8 py-4 aged-edges">
-                      <p className="text-xl font-serif italic text-archive-text leading-relaxed">
-                        “{voice.highlighted_quote}”
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-24 space-y-6">
-            <p className="text-base text-archive-text/60">
-              Oral history recordings are being processed.
-            </p>
-            <p className="text-sm text-archive-text/40 handwritten">
-              Voice records will be available soon.
-            </p>
-          </div>
-        )}
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
