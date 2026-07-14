@@ -1,0 +1,24 @@
+{
+  "summary": "Verified image loading performance optimizations across Living Heritage archive. Hero image uses eager loading + fetchpriority=high, all other images across HomePage, CollectionsPage, and CollectionDetailPage (Rajwada) correctly use loading='lazy'. Page loads quickly with FCP ~2.1s and DOMContentLoaded ~1.6s. Progressive lazy loading attributes verified on all non-critical img tags.",
+  "tested_scope": ["frontend"],
+  "passed": [
+    "Homepage hero <img> has loading='eager' and fetchpriority='high'",
+    "Homepage has 4 non-hero images with loading='lazy' (1 eager, 4 lazy)",
+    "First Contentful Paint = 2096ms (under 3s threshold)",
+    "DOMContentLoaded = 1626ms, load event = 1627ms (fast, non-blocking JS)",
+    "Hero image fully rendered by ~2.10s from navigation start",
+    "CollectionsPage: all 3 collection card images have loading='lazy'",
+    "CollectionDetailPage /collections/rajwada: all 9 archive grid images have loading='lazy'",
+    "Page interactive quickly; no blocking JavaScript observed",
+    "Scroll to bottom of Rajwada page works smoothly, all images available"
+  ],
+  "failed": [],
+  "observations": [
+    "On Rajwada detail page, browser eagerly resolved all 9 lazy images even before scroll — this is expected Chromium behavior (lazy-loading heuristics preload nearby images especially when total page length is modest). The loading='lazy' attribute is correctly applied; browser retains discretion on actual deferral.",
+    "Only 5 img tags found on homepage — Explore/Voices sections may use CSS backgrounds or fewer images than expected, but this matches the source (1 hero + 4 lazy)."
+  ],
+  "action_items": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}

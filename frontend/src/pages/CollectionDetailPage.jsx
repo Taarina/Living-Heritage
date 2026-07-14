@@ -118,6 +118,7 @@ const CollectionDetailPage = () => {
                     <img
                       src={object.image_url}
                       alt={object.title}
+                      loading="lazy"
                       className="archive-image w-full h-full object-cover"
                     />
                     {/* Handwritten date stamp */}
