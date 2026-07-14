@@ -1,0 +1,33 @@
+{
+  "summary": "Verified 5 new authentic Rajwada Palace images replace old stock photos. Backend seed data returns all 5 archive objects (RJ-001..RJ-005) with correct titles, dates (2026-03), and customer-assets.emergentagent.com URLs. All 5 image URLs return HTTP 200. Frontend HomePage and CollectionsPage Rajwada cards use the palace facade image (p07kwv9m). Rajwada collection detail page renders all 5 polaroid tiles with correct archive IDs, titles, and loaded images (naturalWidth > 0). No unsplash/pexels stock images remain on Rajwada page. Lal Bagh still shows LB-018 and LB-025. No console errors; only Cloudflare cdn-cgi/rum telemetry aborts (unrelated to app).",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET /api/collections returns Rajwada, Lal Bagh, Voices",
+    "GET /api/archive-objects?collection=Rajwada returns 5 objects (RJ-001..RJ-005) with correct titles",
+    "All 5 customer-assets image URLs (ijced69t, lb8j5cty, 3sd2e2mc, k3rkgtj0, p07kwv9m) return HTTP 200",
+    "Home page Rajwada card uses palace facade (p07kwv9m) and image loads",
+    "Collections page Rajwada card uses palace facade (p07kwv9m) and image loads",
+    "Rajwada collection page displays 5 polaroid tiles, all customer-assets images loaded",
+    "Archive titles present: Heritage Plaque, Protected Monument Notice, Stone Wall Detail, Ornate Wooden Gateway, Palace Facade",
+    "Date stamp '2026-03' appears 5 times (once per object)",
+    "Old placeholder archive IDs RJ-014 and RJ-022 no longer present on Rajwada page",
+    "No unsplash/pexels stock images on Rajwada page",
+    "Clicking Heritage Plaque tile shows RJ-001 detail",
+    "Lal Bagh collection still contains LB-018 (Assembly Hall) and LB-025 (Rose Garden)",
+    "Zero console errors during navigation"
+  ],
+  "failed": [
+    {
+      "area": "frontend/CollectionDetailPage",
+      "issue": "Rajwada collection detail page shows the Lal Bagh description text ('Interior spaces, gardens, conservation records, and decorative objects from Lal Bagh Palace.') instead of the Rajwada description from the DB. Backend returns correct description; likely a frontend mapping bug.",
+      "evidence": "Screenshot of /collections/Rajwada shows Lal Bagh description under 'Rajwada' heading. Backend /api/collections returns correct Rajwada description.",
+      "priority": "LOW"
+    }
+  ],
+  "action_items": [
+    "Optional: fix Rajwada collection detail page to display the collection's own description (currently appears to show Lal Bagh's description). Out of scope for current image-replacement task but worth addressing."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "95%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}

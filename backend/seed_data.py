@@ -55,44 +55,102 @@ async def seed_database() -> None:
     archive_objects: List[Dict[str, Any]] = [
         {
             "id": "obj-001",
-            "archive_id": "RJ-014",
-            "title": "Stone Corridor",
+            "archive_id": "RJ-001",
+            "title": "Heritage Plaque",
             "creator": "Taarina Chandiramani",
-            "date": "2025-03",
+            "date": "2026-03",
             "collection": "Rajwada",
-            "category": "Architecture",
-            "description": "The central stone corridor of Rajwada Palace showcases the blend of Maratha and Mughal architectural styles. The intricate carved pillars and arched passageways create a play of light and shadow throughout the day.",
-            "keywords": ["architecture", "corridor", "stone", "pillars", "arches"],
-            "image_url": "https://images.unsplash.com/photo-1596901224267-67ca38199090",
+            "category": "Interpretation",
+            "description": "Official Archaeological Survey of India plaque documenting Rajwada's historical significance. The blue heritage marker contains detailed information in Hindi about the palace's construction, fire damage in 1984, and subsequent restoration efforts under state protection.",
+            "keywords": ["heritage", "plaque", "conservation", "documentation", "archaeology"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/ijced69t_Screenshot%202026-07-13%20200934.png",
             "metadata": {
-                "location": "Central Corridor",
-                "material": "Stone",
-                "period": "18th Century"
+                "location": "Main Entrance",
+                "authority": "Directorate of Archaeology, Madhya Pradesh",
+                "type": "Heritage Marker"
             },
             "related_records": [],
             "created_at": "2026-01-15T10:00:00Z"
         },
         {
             "id": "obj-002",
-            "archive_id": "RJ-022",
-            "title": "Palace Facade",
+            "archive_id": "RJ-002",
+            "title": "Protected Monument Notice",
             "creator": "Taarina Chandiramani",
-            "date": "2025-03",
+            "date": "2026-03",
             "collection": "Rajwada",
-            "category": "Architecture",
-            "description": "The seven-story palace facade rises majestically above the surrounding market. The wooden balconies and intricate jharokhas showcase traditional Maratha craftsmanship.",
-            "keywords": ["facade", "architecture", "balcony", "wood", "heritage"],
-            "image_url": "https://images.unsplash.com/photo-1634316127530-4289556bad26",
+            "category": "Conservation",
+            "description": "Bilingual protected monument signage (Hindi and English) declaring Rajwada as a state heritage site under the Madhya Pradesh Ancient Monuments Act, 1975. The plaque outlines prohibited activities and conservation regulations established in 1999.",
+            "keywords": ["conservation", "protection", "monument", "heritage", "regulations"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/lb8j5cty_Screenshot%202026-07-13%20201013.png",
             "metadata": {
-                "location": "Main Facade",
-                "height": "Seven Stories",
-                "period": "18th Century"
+                "location": "Entrance Wall",
+                "legislation": "MP Ancient Monuments Act 1975",
+                "protected_since": "1999"
             },
-            "related_records": ["RJ-014"],
+            "related_records": ["RJ-001"],
             "created_at": "2026-01-15T11:00:00Z"
         },
         {
             "id": "obj-003",
+            "archive_id": "RJ-003",
+            "title": "Stone Wall Detail with Commemorative Plaque",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "Weathered stone masonry wall featuring an ornate carved wooden bracket and a commemorative plaque marking Rajwada Indore. The juxtaposition of rough stone, intricate carvings, and official documentation illustrates layers of the palace's material history.",
+            "keywords": ["stonework", "wall", "plaque", "carving", "masonry"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/3sd2e2mc_Screenshot%202026-07-13%20201029.png",
+            "metadata": {
+                "location": "Exterior Wall",
+                "materials": "Stone, Wood",
+                "period": "18th Century with later additions"
+            },
+            "related_records": ["RJ-001", "RJ-002"],
+            "created_at": "2026-01-16T10:00:00Z"
+        },
+        {
+            "id": "obj-004",
+            "archive_id": "RJ-004",
+            "title": "Ornate Wooden Gateway",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "Monumental wooden door with distinctive scalloped cusped arch, demonstrating the fusion of Maratha and Mughal architectural traditions. The massive teak panels are studded with iron bolts, while the surrounding stonework displays intricate floral and geometric carvings. Visitor information plaques indicate current timings.",
+            "keywords": ["door", "gateway", "arch", "woodwork", "carving", "entrance"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/k3rkgtj0_Screenshot%202026-07-13%20201041.png",
+            "metadata": {
+                "location": "Main Entrance",
+                "material": "Teak wood, Iron, Stone",
+                "style": "Maratha-Mughal fusion"
+            },
+            "related_records": ["RJ-005"],
+            "created_at": "2026-01-16T11:00:00Z"
+        },
+        {
+            "id": "obj-005",
+            "archive_id": "RJ-005",
+            "title": "Palace Facade",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "The iconic seven-story facade of Rajwada Palace rising above Indore's Rajwada Chowk. Built in 1747 by Holkar rulers, the structure showcases Maratha architectural grandeur with its projecting balconies, ornate jharokhas, and distinctive cylindrical towers. The palace combines stone lower stories with upper wooden galleries, exemplifying Indo-Saracenic palace architecture.",
+            "keywords": ["facade", "palace", "architecture", "holkar", "towers", "heritage"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/p07kwv9m_Screenshot%202026-07-13%20201051.png",
+            "metadata": {
+                "location": "Rajwada Chowk",
+                "height": "Seven Stories",
+                "built": "1747",
+                "dynasty": "Holkar"
+            },
+            "related_records": ["RJ-004"],
+            "created_at": "2026-01-17T10:00:00Z"
+        },
+        {
+            "id": "obj-006",
             "archive_id": "LB-018",
             "title": "Assembly Hall",
             "creator": "Taarina Chandiramani",
@@ -111,7 +169,7 @@ async def seed_database() -> None:
             "created_at": "2026-01-16T10:00:00Z"
         },
         {
-            "id": "obj-004",
+            "id": "obj-007",
             "archive_id": "LB-025",
             "title": "Rose Garden",
             "creator": "Taarina Chandiramani",
