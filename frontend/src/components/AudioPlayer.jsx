@@ -6,48 +6,8 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [blobUrl, setBlobUrl] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [hasError, setHasError] = useState(false);
   const audioRef = useRef(null);
-  
-  // Fetch audio and create blob URL with correct MIME type
-  useEffect(() => {
-    let objectUrl;
-    
-    const loadAudio = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const response = await fetch(audioUrl);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        
-        const blob = await response.blob();
-        // Create new blob with correct MIME type
-        const correctBlob = new Blob([blob], { type: 'audio/mp4' });
-        objectUrl = URL.createObjectURL(correctBlob);
-        setBlobUrl(objectUrl);
-        setLoading(false);
-      } catch (err) {
-        if (process.env.NODE_ENV === 'development') {
-          console.error('Audio load error:', err);
-        }
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-    
-    if (audioUrl) {
-      loadAudio();
-    }
-    
-    return () => {
-      if (objectUrl) {
-        URL.revokeObjectURL(objectUrl);
-      }
-    };
-  }, [audioUrl]);
   
   const handleTimeUpdate = useCallback(() => {
     if (audioRef.current) {
@@ -58,10 +18,16 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   const handleLoadedMetadata = useCallback(() => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
+      setHasError(false);
     }
   }, []);
   
   const handleEnded = useCallback(() => {
+    setIsPlaying(false);
+  }, []);
+  
+  const handleError = useCallback(() => {
+    setHasError(true);
     setIsPlaying(false);
   }, []);
   
@@ -72,27 +38,31 @@ const AudioPlayer = ({ audioUrl, testId }) => {
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
     
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
     };
-  }, [handleTimeUpdate, handleLoadedMetadata, handleEnded]);
+  }, [handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError]);
   
   const togglePlay = () => {
-    if (audioRef.current) {
+    if (audioRef.current && !hasError) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.play().catch(() => {
+          setHasError(true);
+        });
       }
       setIsPlaying(!isPlaying);
     }
   };
   
   const handleSeek = (e) => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || hasError) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const percentage = x / rect.width;
@@ -102,6 +72,7 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   };
   
   const formatTime = (time) => {
+    if (!isFinite(time) || isNaN(time)) return '0:00';
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
@@ -109,18 +80,10 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   
-  if (loading) {
+  if (hasError) {
     return (
-      <div className="text-sm text-archive-text/50 py-4">
-        Loading audio...
-      </div>
-    );
-  }
-  
-  if (error) {
-    return (
-      <div className="text-sm text-red-600 py-4">
-        Audio unavailable
+      <div className="text-sm text-archive-text/50 py-4 italic">
+        Audio player unavailable in this browser
       </div>
     );
   }
@@ -129,7 +92,7 @@ const AudioPlayer = ({ audioUrl, testId }) => {
     <div className="space-y-4" data-testid={testId || VOICES.audioPlayer}>
       <audio 
         ref={audioRef}
-        src={blobUrl}
+        src={audioUrl}
         preload="metadata"
       />
       
