@@ -1,0 +1,37 @@
+{
+  "summary": "Frontend-only audio fix verification on /voices. The <source> tag fix did NOT resolve the issue. All 4 audio elements fail to load: readyState=0, networkState=3 (NETWORK_NO_SOURCE), duration=NaN. Root cause remains at the CDN/file level, not fixable by MIME hint in <source> tags because CDN returns 'content-type: audio/x-m4a' with 'x-content-type-options: nosniff', preventing MIME override. Homepage images verified working (4/4 loaded).",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Voices page loads and renders 4 <audio> elements with two <source> children each (audio/mp4 + audio/mpeg)",
+    "Source URLs are correctly attached (currentSrc populated)",
+    "Homepage images: 4/4 loaded successfully"
+  ],
+  "failed": [
+    {
+      "area": "Voices page - audio playback",
+      "issue": "All 4 audio elements fail to load. networkState=3 (NETWORK_NO_SOURCE), readyState=0, duration=NaN. Browser rejects both <source> tags (audio/mp4 and audio/mpeg) despite explicit type declarations.",
+      "evidence": "Playwright evaluate on all 4 <audio> nodes returned {readyState: 0, networkState: 3, duration: NaN} for every element. CDN HEAD shows content-type: audio/x-m4a with x-content-type-options: nosniff -- browser cannot be tricked by <source type='audio/mp4'> because nosniff forces actual Content-Type.",
+      "priority": "HIGH"
+    },
+    {
+      "area": "Voices page - play button",
+      "issue": "0 elements match [data-testid='play-button']. Either the audio player did not fully render due to load failure, or testId is not applied. Cannot verify play interaction.",
+      "evidence": "await page.query_selector_all('[data-testid=\"play-button\"]') returned 0 items even though 4 <audio> nodes exist.",
+      "priority": "HIGH"
+    },
+    {
+      "area": "Archive data fetch (unrelated to audio)",
+      "issue": "Console error: 'Failed to load archive data: TypeError: Failed to fetch' fires from loadArchiveData in bundle.js. Not blocking audio but worth surfacing.",
+      "evidence": "2x console errors captured on /voices navigation.",
+      "priority": "MEDIUM"
+    }
+  ],
+  "action_items": [
+    "The <source type='audio/mp4'> approach cannot override CDN's 'audio/x-m4a' + nosniff header. Options: (a) Re-upload files with '.mp4' extension and correct Content-Type, (b) Ask emergent CDN team to serve 'audio/mp4' or 'audio/mpeg' for these assets, (c) Fetch the file via JS and create a Blob URL with the correct MIME type, (d) Convert files to MP3/OGG.",
+    "Investigate why data-testid='play-button' is not present on rendered audio players - may be that the component throws before rendering interactive controls when duration=NaN, or VOICES.playButton constant is mis-mapped.",
+    "Investigate Failed to fetch for archive data endpoint (loadArchiveData) - likely backend/CORS issue on the API used by voices page."
+  ],
+  "success_rate": {"backend": "not tested", "frontend": "20%"},
+  "retest_needed": true,
+  "full_testing_deferred": true
+}

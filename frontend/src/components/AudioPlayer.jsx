@@ -68,13 +68,16 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   return (
     <div className="space-y-4" data-testid={testId || VOICES.audioPlayer}>
       <audio 
-        ref={audioRef} 
-        src={audioUrl}
+        ref={audioRef}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
         preload="metadata"
-      />
+      >
+        <source src={audioUrl} type="audio/mp4" />
+        <source src={audioUrl} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
       
       <div className="flex items-center gap-6">
         <button
