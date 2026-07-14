@@ -420,6 +420,106 @@ async def seed_database() -> None:
             },
             "related_records": ["LB-007"],
             "created_at": "2026-01-19T14:00:00Z"
+        },
+        {
+            "id": "obj-020",
+            "archive_id": "LB-011",
+            "title": "Painted Ceiling Dome - Classical Fresco",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "Monumental oval ceiling fresco depicting classical mythological figures floating amid clouds in the tradition of European baroque ceiling painting. The central composition features deities and cherubs in dynamic poses, rendered in soft pastels of blue, pink, and gold. The fresco is surrounded by an elaborate gilded stucco frame with acanthus leaf molding and three-dimensional floral reliefs, demonstrating the palace's commitment to European artistic traditions.",
+            "keywords": ["ceiling", "fresco", "painting", "baroque", "mythology", "gilded", "plasterwork"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/9l5oj847_Screenshot%202026-07-13%20205259.png",
+            "metadata": {
+                "location": "Main Durbar Hall",
+                "technique": "Ceiling fresco",
+                "style": "European Baroque",
+                "subject": "Classical mythology"
+            },
+            "related_records": ["LB-012"],
+            "created_at": "2026-01-20T10:00:00Z"
+        },
+        {
+            "id": "obj-021",
+            "archive_id": "LB-012",
+            "title": "Grand Durbar Hall with Throne",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "The palace's ceremonial throne room showcasing the apex of Indo-European palatial design. The room features the painted dome ceiling with mythological frescoes, massive Belgian crystal chandeliers, and mint-green walls adorned with gilded rococo decorations. The royal throne sits elevated on a dais beneath purple velvet canopy drapery. Period furniture arranged on intricate carpets creates formal reception spaces. This hall served as the primary ceremonial and state function space of the Holkar court.",
+            "keywords": ["durbar", "throne room", "ceremonial", "chandelier", "baroque", "royal", "state room"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/bfzminca_Screenshot%202026-07-13%20205406.png",
+            "metadata": {
+                "location": "Main Durbar Hall",
+                "function": "State ceremonies and audiences",
+                "style": "French Baroque/Rococo",
+                "features": "Throne dais, crystal chandeliers, painted ceiling"
+            },
+            "related_records": ["LB-011", "LB-007"],
+            "created_at": "2026-01-20T11:00:00Z"
+        },
+        {
+            "id": "obj-022",
+            "archive_id": "LB-013",
+            "title": "Portrait Gallery with Marble Fireplace",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "Intimate portrait gallery displaying oil paintings of Holkar family members in gilded frames against pale green walls. The room centers on an ornately carved white marble fireplace with a functioning hearth. A magnificent Belgian crystal chandelier illuminates the space, while fluted Corinthian columns and gilded rococo wall decorations frame the portraits. The painted floor covering displays baroque floral patterns. This room served as a private reception and family portrait gallery.",
+            "keywords": ["portrait", "gallery", "fireplace", "marble", "chandelier", "family", "paintings"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/d6e1gesq_Screenshot%202026-07-13%20205451.png",
+            "metadata": {
+                "location": "Portrait Gallery Room",
+                "features": "Marble fireplace, family portraits, crystal chandelier",
+                "style": "European Rococo",
+                "function": "Private reception and portrait display"
+            },
+            "related_records": ["LB-014"],
+            "created_at": "2026-01-20T12:00:00Z"
+        },
+        {
+            "id": "obj-023",
+            "archive_id": "LB-014",
+            "title": "Portrait Gallery - Alternate View",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "Another perspective of the portrait gallery revealing the room's extensive collection of royal family portraits in elaborate gilded frames. The walls display intricate gold-leaf rococo decorations cascading between the paintings. The crystal chandelier and period furniture create an elegant salon atmosphere. The asymmetrical arrangement of portraits of varying sizes demonstrates Victorian gallery hanging practices, while the ornate gilded swags and cartouches frame each artwork.",
+            "keywords": ["portraits", "gilded", "rococo", "chandelier", "royal family", "gallery", "decorative arts"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/7682elv8_Screenshot%202026-07-13%20205700.png",
+            "metadata": {
+                "location": "Portrait Gallery Room",
+                "collection": "Holkar family portraits",
+                "decorative_style": "Gilded rococo",
+                "period": "19th-20th Century"
+            },
+            "related_records": ["LB-013"],
+            "created_at": "2026-01-20T13:00:00Z"
+        },
+        {
+            "id": "obj-024",
+            "archive_id": "LB-015",
+            "title": "Inner Courtyard with Tiger Display",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Objects",
+            "description": "The palace's two-story neoclassical inner courtyard features a continuous arcade of semicircular arches supported by columns. In the foreground, a taxidermied Bengal tiger in a glass display case represents the royal hunting tradition and the Holkar connection to wildlife. The courtyard's museum configuration includes display panels and lighting, showing the palace's transformation into a public heritage museum. The architecture demonstrates Italian Renaissance-inspired courtyard design adapted to Indian climate.",
+            "keywords": ["courtyard", "tiger", "arcade", "museum", "architecture", "neoclassical", "display"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/ix95hssj_Screenshot%202026-07-13%20205728.png",
+            "metadata": {
+                "location": "Inner Courtyard",
+                "architecture": "Neoclassical arcade",
+                "museum_display": "Bengal tiger specimen",
+                "style": "Italian Renaissance courtyard"
+            },
+            "related_records": ["LB-012"],
+            "created_at": "2026-01-20T14:00:00Z"
         }
     ]
     
