@@ -227,41 +227,99 @@ async def seed_database() -> None:
         },
         {
             "id": "obj-010",
-            "archive_id": "LB-018",
-            "title": "Assembly Hall",
+            "archive_id": "LB-001",
+            "title": "Protected Monument Heritage Plaque",
             "creator": "Taarina Chandiramani",
-            "date": "2025-04",
+            "date": "2026-04",
             "collection": "Lal Bagh",
-            "category": "Interiors",
-            "description": "The grand assembly hall features ornate chandeliers, Italian marble floors, and European-style furniture. This space reflects the cosmopolitan tastes of the Holkar rulers.",
-            "keywords": ["interior", "hall", "chandelier", "marble", "colonial"],
-            "image_url": "https://images.unsplash.com/photo-1780245996835-90c0ac8bf4dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+            "category": "Conservation",
+            "description": "Official Archaeological Survey of India protected monument marker set within the lush gardens of Lal Bagh Palace. The bilingual plaque (Hindi and English) documents the palace's historical significance and conservation status under state heritage protection. The surrounding mature trees and vegetation emphasize the palace's integration with landscape design.",
+            "keywords": ["heritage", "plaque", "conservation", "gardens", "protected monument"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/hx2hlolr_Screenshot%202026-07-13%20204453.png",
             "metadata": {
-                "location": "Main Hall",
-                "material": "Italian Marble",
-                "period": "Late 19th Century"
+                "location": "Palace Gardens",
+                "authority": "Archaeological Survey of India",
+                "type": "Heritage Marker"
             },
             "related_records": [],
-            "created_at": "2026-01-16T10:00:00Z"
+            "created_at": "2026-01-18T10:00:00Z"
         },
         {
             "id": "obj-011",
-            "archive_id": "LB-025",
-            "title": "Rose Garden",
+            "archive_id": "LB-002",
+            "title": "Entrance Information Board",
             "creator": "Taarina Chandiramani",
-            "date": "2025-04",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interpretation",
+            "description": "Blue informational plaque at the palace entrance, positioned against corrugated fencing and mature tree canopy. The weathered signage and informal entrance setting document the palace's current state as a protected heritage site undergoing preservation, contrasting with its historical grandeur.",
+            "keywords": ["entrance", "signage", "information", "conservation", "access"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/qjp0s4lw_Screenshot%202026-07-13%20204513.png",
+            "metadata": {
+                "location": "Service Entrance",
+                "condition": "Active conservation site",
+                "type": "Informational marker"
+            },
+            "related_records": ["LB-001"],
+            "created_at": "2026-01-18T11:00:00Z"
+        },
+        {
+            "id": "obj-012",
+            "archive_id": "LB-003",
+            "title": "Palace Gate with Heritage Signage",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Architecture",
+            "description": "View of the ornate Victorian-style iron gates framed by white neoclassical pillars. The blue Lal Bagh Palace identification board (in Hindi and English) marks this entrance. The juxtaposition of European architectural elements with Indian landscaping reflects the cosmopolitan aesthetic of the Holkar rulers.",
+            "keywords": ["gate", "entrance", "iron work", "pillars", "signage", "architecture"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/lukciat5_Screenshot%202026-07-13%20204526.png",
+            "metadata": {
+                "location": "Main Gate",
+                "style": "Victorian Indo-European",
+                "materials": "Iron, Stone, Plaster"
+            },
+            "related_records": ["LB-005"],
+            "created_at": "2026-01-18T12:00:00Z"
+        },
+        {
+            "id": "obj-013",
+            "archive_id": "LB-004",
+            "title": "Garden Heritage Marker",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
             "collection": "Lal Bagh",
             "category": "Gardens",
-            "description": "The palace gardens feature symmetrical pathways, fountains, and seasonal plantings. The rose garden was personally designed by Maharani Ahilyabai Holkar.",
-            "keywords": ["garden", "landscape", "roses", "fountain", "heritage"],
-            "image_url": "https://images.unsplash.com/photo-1777620842997-bc178ed2599b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+            "description": "Blue heritage information plaque positioned within the palace's formal gardens, featuring pink paved pathways, manicured lawns, and ornamental plantings. The marker provides historical context about Maharaja Tukoji Rao Holkar II's construction of the palace (1886-1921) and documents the evolution of the gardens as part of the palace's European-inspired design.",
+            "keywords": ["gardens", "landscape", "heritage", "plaque", "pathways", "conservation"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/coob0gtq_Screenshot%202026-07-13%20204656.png",
             "metadata": {
-                "location": "East Gardens",
-                "area": "2 Acres",
-                "designed_by": "Maharani Ahilyabai Holkar"
+                "location": "Formal Gardens",
+                "period": "Late 19th Century",
+                "landscape_style": "European formal garden"
             },
-            "related_records": ["LB-018"],
-            "created_at": "2026-01-16T11:00:00Z"
+            "related_records": ["LB-001"],
+            "created_at": "2026-01-18T13:00:00Z"
+        },
+        {
+            "id": "obj-014",
+            "archive_id": "LB-005",
+            "title": "Main Gateway Entrance",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Architecture",
+            "description": "The monumental entrance to Lal Bagh Palace featuring four imposing white neoclassical columns topped with carved lion sculptures symbolizing royal authority. The ornate Victorian wrought-iron gates display intricate scrollwork. Behind, the tree-lined avenue creates a ceremonial approach typical of European palace design, reflecting Maharaja Tukoji Rao Holkar II's vision of a modern Indo-European palace.",
+            "keywords": ["gateway", "entrance", "lions", "pillars", "gates", "neoclassical", "architecture"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uzk1qfq2_Screenshot%202026-07-13%20204708.png",
+            "metadata": {
+                "location": "Main Entrance",
+                "built": "1886-1921",
+                "style": "Neoclassical European",
+                "ruler": "Maharaja Tukoji Rao Holkar II"
+            },
+            "related_records": ["LB-003"],
+            "created_at": "2026-01-18T14:00:00Z"
         }
     ]
     
