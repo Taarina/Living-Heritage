@@ -67,7 +67,14 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   
   return (
     <div className="space-y-4" data-testid={testId || VOICES.audioPlayer}>
-      <audio ref={audioRef} src={audioUrl} />
+      <audio 
+        ref={audioRef} 
+        src={audioUrl}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+        onEnded={handleEnded}
+        preload="metadata"
+      />
       
       <div className="flex items-center gap-6">
         <button
