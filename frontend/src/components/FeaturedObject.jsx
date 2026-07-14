@@ -19,7 +19,8 @@ const FeaturedObject = ({ object }) => {
               <img
                 src={object.image_url}
                 alt={object.title}
-                loading="lazy"
+                loading="eager"
+                crossOrigin="anonymous"
                 className="archive-image w-full h-full object-cover"
               />
               <div className="date-stamp">

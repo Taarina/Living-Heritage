@@ -46,8 +46,13 @@ const CollectionsGrid = () => {
                 <img
                   src={collection.image}
                   alt={collection.name}
-                  loading="lazy"
+                  loading="eager"
+                  crossOrigin="anonymous"
                   className="archive-image w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = `<div class="flex items-center justify-center h-full bg-archive-secondary text-archive-text/50"><span>${collection.name}</span></div>`;
+                  }}
                 />
               </div>
               

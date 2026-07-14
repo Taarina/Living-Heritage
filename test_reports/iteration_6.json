@@ -1,0 +1,23 @@
+{
+  "summary": "Verified image loading bug fix. All external CDN images from customer-assets.emergentagent.com now render correctly on homepage, collections list, collection detail pages, and voices page. Hard refresh persistence confirmed.",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Homepage: Hero image (Rajwada Palace View) loads (naturalWidth=896)",
+    "Homepage: Featured Object image (Heritage Plaque) loads (naturalWidth=497)",
+    "Homepage: Collections grid Rajwada cover loads (naturalWidth=892)",
+    "Homepage: Collections grid Lal Bagh cover loads (naturalWidth=896)",
+    "All 4 CDN image requests returned HTTP 200",
+    "Hard refresh (reload): 4/4 CDN images still load, 0 failures",
+    "Collections page (/collections): 3/3 images loaded (Rajwada, Lal Bagh, Voices covers)",
+    "Rajwada detail page (/collections/rajwada): 9/9 images loaded (matches expected 9)",
+    "Lal Bagh detail page (/collections/lal-bagh): 19/19 images loaded (matches expected 19)",
+    "Voices page (/voices): 4/4 portraits loaded (matches expected 4)",
+    "No image-related console errors observed"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "not tested (skipped per request)", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "External CDN (customer-assets.emergentagent.com) is reachable and serving images. crossOrigin + eager loading fixes verified working. Bug appears resolved."
+}

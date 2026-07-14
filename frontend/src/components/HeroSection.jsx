@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const HeroSection = ({ onScrollToContent }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  
   return (
     <section
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0">
+        {!imageLoaded && !imageError && (
+          <div className="w-full h-full bg-archive-secondary animate-pulse" />
+        )}
         <img
           src="https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/gqytg1r1_image.png"
           alt="Rajwada Palace View"
           fetchPriority="high"
-          className="w-full h-full object-cover vintage-photo"
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageError(true)}
+          className={`w-full h-full object-cover vintage-photo ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          crossOrigin="anonymous"
         />
         <div className="hero-overlay absolute inset-0" />
       </div>
