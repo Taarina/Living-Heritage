@@ -151,6 +151,82 @@ async def seed_database() -> None:
         },
         {
             "id": "obj-006",
+            "archive_id": "RJ-006",
+            "title": "Interior Courtyard Through Pillars",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "View of the inner courtyard framed by thick stone pillars with carved brackets and cusped arches. The multi-story courtyard showcases the palace's layered architectural composition, with light filtering through successive archways. The interplay of shadow and light emphasizes the depth of Maratha palatial design.",
+            "keywords": ["courtyard", "pillars", "arches", "interior", "perspective"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uvayhis0_Screenshot%202026-07-13%20202745.png",
+            "metadata": {
+                "location": "Inner Courtyard",
+                "material": "Stone",
+                "architectural_feature": "Multi-story arcade"
+            },
+            "related_records": ["RJ-007"],
+            "created_at": "2026-01-17T11:00:00Z"
+        },
+        {
+            "id": "obj-007",
+            "archive_id": "RJ-007",
+            "title": "Stone Corridor with Scalloped Arches",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "A monumental stone corridor extending through successive cusped arches creates a dramatic vanishing point. The weathered stone pillars with carved capitals demonstrate traditional Maratha construction techniques. The repetitive archways create a rhythmic architectural sequence typical of 18th-century palace design.",
+            "keywords": ["corridor", "arches", "perspective", "stone", "pillars"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/cz6ck6ax_Screenshot%202026-07-13%20202814.png",
+            "metadata": {
+                "location": "Main Corridor",
+                "material": "Stone",
+                "architectural_style": "Maratha"
+            },
+            "related_records": ["RJ-006", "RJ-008"],
+            "created_at": "2026-01-17T12:00:00Z"
+        },
+        {
+            "id": "obj-008",
+            "archive_id": "RJ-008",
+            "title": "Carved Archway Detail",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "Close perspective of interior archways revealing intricate stone carving and layered cusped arches. The weathered stone surfaces show traces of past restoration work. This view captures the palace's architectural vocabulary of repeated scalloped forms and ornate capitals that define Holkar period architecture.",
+            "keywords": ["archway", "carving", "detail", "stone", "cusped arch"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/a7hrczhl_Screenshot%202026-07-13%20202912.png",
+            "metadata": {
+                "location": "Interior Arcade",
+                "material": "Carved Stone",
+                "condition": "Weathered, partially restored"
+            },
+            "related_records": ["RJ-007"],
+            "created_at": "2026-01-17T13:00:00Z"
+        },
+        {
+            "id": "obj-009",
+            "archive_id": "RJ-009",
+            "title": "Open Courtyard",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-03",
+            "collection": "Rajwada",
+            "category": "Public Space",
+            "description": "The palace's central open courtyard showing the contrast between white-plastered and exposed sandstone sections. Large cusped arches define the ground level, while upper stories display continuous arcaded galleries. This space served as the main ceremonial and public gathering area of the palace complex.",
+            "keywords": ["courtyard", "public space", "arches", "plaza", "ceremonial"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/tiia80mb_Screenshot%202026-07-13%20202948.png",
+            "metadata": {
+                "location": "Central Courtyard",
+                "function": "Ceremonial space",
+                "materials": "Sandstone, plaster"
+            },
+            "related_records": ["RJ-006"],
+            "created_at": "2026-01-17T14:00:00Z"
+        },
+        {
+            "id": "obj-010",
             "archive_id": "LB-018",
             "title": "Assembly Hall",
             "creator": "Taarina Chandiramani",
@@ -169,7 +245,7 @@ async def seed_database() -> None:
             "created_at": "2026-01-16T10:00:00Z"
         },
         {
-            "id": "obj-007",
+            "id": "obj-011",
             "archive_id": "LB-025",
             "title": "Rose Garden",
             "creator": "Taarina Chandiramani",
