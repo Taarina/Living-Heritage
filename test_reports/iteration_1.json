@@ -1,0 +1,28 @@
+{
+  "summary": "First-finish smoke test for Living Heritage digital archive. Backend API (5 endpoints) and frontend UI (all 8 pages + archive viewer modal) tested end-to-end. All critical flows working: homepage hero, navigation, collections listing, Rajwada collection detail with category filters, archive viewer modal with full metadata, voices page with oral history records, search with keyword results, explore, about, footer. Museum/editorial design verified: bg #F7F5F0, Cormorant Garamond headings, Inter body, sharp corners, no shadows, IBM Plex Mono archive IDs (RJ-###, LB-###, OH-###).",
+  "tested_scope": ["frontend", "backend", "integration"],
+  "passed": [
+    "GET /api/collections returns 3 collections (Series I Rajwada, Series II Lal Bagh, Series III Voices) with 200",
+    "GET /api/archive-objects returns 4 objects with archive_ids RJ-014, RJ-022, LB-018, LB-025",
+    "GET /api/archive-objects?collection=Rajwada correctly filters to 2 Rajwada objects",
+    "GET /api/voices returns oral history records with OH- archive IDs",
+    "GET /api/search?q=palace returns relevant objects and voices",
+    "Homepage loads with fullscreen hero, 'Living Heritage' h1, subtitle, scroll indicator (screenshot verified)",
+    "Navigation links present with data-testid: nav-home-link, nav-collections-link, nav-explore-link, nav-voices-link, nav-about-link, nav-search-link",
+    "Collections page displays 3 collection cards (Rajwada, Lal Bagh, Voices) with Series labels and categories",
+    "/collections/rajwada shows Series I label, Rajwada heading, 2 archive object cards (RJ-022 Palace Facade, RJ-014), and category filters (All, Architecture)",
+    "Clicking archive-object-card opens archive-object-viewer modal with archive_id, title, collection, creator, date, description, keywords chips, and metadata fields",
+    "archive-viewer-close button present and functional",
+    "Voices page renders 6 voice records with OH- archive IDs",
+    "Search page returns results for 'palace' query",
+    "Explore and About pages load without errors",
+    "Footer contains 'Living Heritage' and 'Open Access' / '2026'",
+    "Design: body bg=rgb(247,245,240) which is #F7F5F0; heading font='Cormorant Garamond'; body font='Inter'; sharp corners; flat design (no shadows)"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "Minor: GET /api/archive-objects?collection_id=coll-001 param is ignored by backend (returns all 4 objects), but frontend uses ?collection=<name> which works correctly. Not a blocker. No console errors observed during navigation flows."
+}

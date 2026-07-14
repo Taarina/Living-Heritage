@@ -1,0 +1,154 @@
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { COLLECTIONS } from '@/constants/testIds';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const CollectionsPage = () => {
+  const [collections, setCollections] = useState([]);
+  
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const response = await axios.get(`${API}/collections`);
+        setCollections(response.data);
+      } catch (error) {
+        console.error('Error fetching collections:', error);
+      }
+    };
+    
+    fetchCollections();
+  }, []);
+  
+  const collectionImages = {
+    'Rajwada': 'https://images.unsplash.com/photo-1596901224267-67ca38199090',
+    'Lal Bagh': 'https://images.unsplash.com/photo-1780245996835-90c0ac8bf4dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85',
+    'Voices': 'https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+  };
+  
+  return (
+    <div className="min-h-screen pt-32 pb-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="space-y-12 mb-24">
+          <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
+            Collections
+          </h1>
+          
+          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl">
+            The archive is organized into three series, each exploring different aspects of Rajwada and Lal Bagh Palace through photography, documentation, and oral histories.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          {collections.length > 0 ? (
+            collections.map((collection, idx) => {
+              const testIds = [COLLECTIONS.rajwadaCard, COLLECTIONS.lalBaghCard, COLLECTIONS.voicesCard];
+              const slug = collection.name.toLowerCase().replace(/\s+/g, '-');
+              
+              return (
+                <Link
+                  key={collection.id}
+                  to={collection.name === 'Voices' ? '/voices' : `/collections/${slug}`}
+                  data-testid={testIds[idx]}
+                  className="archival-drawer bg-transparent group"
+                >
+                  <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary">
+                    <img
+                      src={collectionImages[collection.name] || collectionImages['Rajwada']}
+                      alt={`${collection.name} Collection`}
+                      className="archive-image w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                      {collection.series}
+                    </p>
+                    <h3 className="text-2xl md:text-3xl font-serif text-archive-text">
+                      {collection.name}
+                    </h3>
+                    <p className="text-sm text-archive-text/70 leading-relaxed">
+                      {collection.categories.join(' • ')}
+                    </p>
+                    <p className="text-xs font-mono text-archive-text/60">
+                      {collection.object_count} objects
+                    </p>
+                  </div>
+                </Link>
+              );
+            })
+          ) : (
+            // Default collections if none exist in DB
+            <>
+              <Link
+                to="/collections/rajwada"
+                data-testid={COLLECTIONS.rajwadaCard}
+                className="archival-drawer bg-transparent group"
+              >
+                <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary">
+                  <img
+                    src="https://images.unsplash.com/photo-1596901224267-67ca38199090"
+                    alt="Rajwada Collection"
+                    className="archive-image w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">Series I</p>
+                  <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Rajwada</h3>
+                  <p className="text-sm text-archive-text/70 leading-relaxed">
+                    Architecture • Public Space • Objects • Interpretation
+                  </p>
+                </div>
+              </Link>
+              
+              <Link
+                to="/collections/lal-bagh"
+                data-testid={COLLECTIONS.lalBaghCard}
+                className="archival-drawer bg-transparent group"
+              >
+                <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary">
+                  <img
+                    src="https://images.unsplash.com/photo-1780245996835-90c0ac8bf4dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85"
+                    alt="Lal Bagh Collection"
+                    className="archive-image w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">Series II</p>
+                  <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Lal Bagh</h3>
+                  <p className="text-sm text-archive-text/70 leading-relaxed">
+                    Interiors • Gardens • Conservation • Objects
+                  </p>
+                </div>
+              </Link>
+              
+              <Link
+                to="/voices"
+                data-testid={COLLECTIONS.voicesCard}
+                className="archival-drawer bg-transparent group"
+              >
+                <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary">
+                  <img
+                    src="https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="Voices Collection"
+                    className="archive-image w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">Series III</p>
+                  <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Voices</h3>
+                  <p className="text-sm text-archive-text/70 leading-relaxed">
+                    Oral Histories
+                  </p>
+                </div>
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CollectionsPage;

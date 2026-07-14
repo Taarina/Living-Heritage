@@ -1,0 +1,144 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ArchiveViewer from '@/components/ArchiveViewer';
+import { ARCHIVE } from '@/constants/testIds';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const CollectionDetailPage = () => {
+  const { slug } = useParams();
+  const [objects, setObjects] = useState([]);
+  const [selectedObject, setSelectedObject] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  
+  const collectionName = slug === 'rajwada' ? 'Rajwada' : slug === 'lal-bagh' ? 'Lal Bagh' : slug;
+  const series = slug === 'rajwada' ? 'Series I' : 'Series II';
+  
+  useEffect(() => {
+    const fetchObjects = async () => {
+      try {
+        const response = await axios.get(`${API}/archive-objects`, {
+          params: { collection: collectionName }
+        });
+        setObjects(response.data);
+        
+        // Extract unique categories
+        const cats = [...new Set(response.data.map(obj => obj.category).filter(Boolean))];
+        setCategories(cats);
+      } catch (error) {
+        console.error('Error fetching objects:', error);
+      }
+    };
+    
+    fetchObjects();
+  }, [collectionName]);
+  
+  const filteredObjects = selectedCategory === 'all'
+    ? objects
+    : objects.filter(obj => obj.category === selectedCategory);
+  
+  return (
+    <div className="min-h-screen pt-32 pb-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="space-y-8 mb-16">
+          <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+            {series}
+          </p>
+          
+          <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
+            {collectionName}
+          </h1>
+          
+          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl">
+            {slug === 'rajwada'
+              ? 'Architectural documentation, public spaces, and material culture of Rajwada Palace.'
+              : 'Interior spaces, gardens, conservation records, and decorative objects from Lal Bagh Palace.'}
+          </p>
+          
+          {/* Category Filter */}
+          {categories.length > 0 && (
+            <div className="flex flex-wrap gap-3 pt-6">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-4 py-2 text-sm tracking-wider transition-smooth ${
+                  selectedCategory === 'all'
+                    ? 'bg-archive-olive text-white'
+                    : 'border border-archive-text/20 text-archive-text hover:bg-archive-secondary'
+                }`}
+              >
+                All
+              </button>
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 text-sm tracking-wider transition-smooth ${
+                    selectedCategory === category
+                      ? 'bg-archive-olive text-white'
+                      : 'border border-archive-text/20 text-archive-text hover:bg-archive-secondary'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        {/* Archive Objects Grid */}
+        {filteredObjects.length > 0 ? (
+          <div className="archive-grid">
+            {filteredObjects.map((object) => (
+              <button
+                key={object.id}
+                onClick={() => setSelectedObject(object)}
+                data-testid={ARCHIVE.objectCard}
+                className="archival-drawer bg-transparent group text-left"
+              >
+                <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary">
+                  <img
+                    src={object.image_url}
+                    alt={object.title}
+                    className="archive-image w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 space-y-3">
+                  <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                    {object.archive_id}
+                  </p>
+                  <h3 className="text-xl font-serif text-archive-text">
+                    {object.title}
+                  </h3>
+                  <p className="text-sm text-archive-text/60 font-mono">
+                    {object.date}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-24 space-y-6">
+            <p className="text-base text-archive-text/60">
+              No objects in this collection yet.
+            </p>
+            <p className="text-sm text-archive-text/40">
+              Archive records will be added soon.
+            </p>
+          </div>
+        )}
+      </div>
+      
+      {selectedObject && (
+        <ArchiveViewer
+          object={selectedObject}
+          onClose={() => setSelectedObject(null)}
+        />
+      )}
+    </div>
+  );
+};
+
+export default CollectionDetailPage;

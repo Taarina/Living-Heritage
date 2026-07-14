@@ -1,0 +1,190 @@
+import asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
+mongo_url = os.environ['MONGO_URL']
+db_name = os.environ['DB_NAME']
+
+async def seed_database():
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+    
+    # Clear existing data
+    await db.collections.delete_many({})
+    await db.archive_objects.delete_many({})
+    await db.voices.delete_many({})
+    
+    # Seed Collections
+    collections = [
+        {
+            "id": "coll-001",
+            "series": "Series I",
+            "name": "Rajwada",
+            "description": "Architectural documentation, public spaces, and material culture of Rajwada Palace.",
+            "categories": ["Architecture", "Public Space", "Objects", "Interpretation"],
+            "object_count": 0
+        },
+        {
+            "id": "coll-002",
+            "series": "Series II",
+            "name": "Lal Bagh",
+            "description": "Interior spaces, gardens, conservation records, and decorative objects from Lal Bagh Palace.",
+            "categories": ["Interiors", "Gardens", "Conservation", "Objects"],
+            "object_count": 0
+        },
+        {
+            "id": "coll-003",
+            "series": "Series III",
+            "name": "Voices",
+            "description": "Oral histories from caretakers, researchers, and community members.",
+            "categories": ["Oral Histories"],
+            "object_count": 0
+        }
+    ]
+    
+    await db.collections.insert_many(collections)
+    print(f"✓ Seeded {len(collections)} collections")
+    
+    # Seed Archive Objects
+    archive_objects = [
+        {
+            "id": "obj-001",
+            "archive_id": "RJ-014",
+            "title": "Stone Corridor",
+            "creator": "Taarina Chandiramani",
+            "date": "2025-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "The central stone corridor of Rajwada Palace showcases the blend of Maratha and Mughal architectural styles. The intricate carved pillars and arched passageways create a play of light and shadow throughout the day.",
+            "keywords": ["architecture", "corridor", "stone", "pillars", "arches"],
+            "image_url": "https://images.unsplash.com/photo-1596901224267-67ca38199090",
+            "metadata": {
+                "location": "Central Corridor",
+                "material": "Stone",
+                "period": "18th Century"
+            },
+            "related_records": [],
+            "created_at": "2026-01-15T10:00:00Z"
+        },
+        {
+            "id": "obj-002",
+            "archive_id": "RJ-022",
+            "title": "Palace Facade",
+            "creator": "Taarina Chandiramani",
+            "date": "2025-03",
+            "collection": "Rajwada",
+            "category": "Architecture",
+            "description": "The seven-story palace facade rises majestically above the surrounding market. The wooden balconies and intricate jharokhas showcase traditional Maratha craftsmanship.",
+            "keywords": ["facade", "architecture", "balcony", "wood", "heritage"],
+            "image_url": "https://images.unsplash.com/photo-1634316127530-4289556bad26",
+            "metadata": {
+                "location": "Main Facade",
+                "height": "Seven Stories",
+                "period": "18th Century"
+            },
+            "related_records": ["RJ-014"],
+            "created_at": "2026-01-15T11:00:00Z"
+        },
+        {
+            "id": "obj-003",
+            "archive_id": "LB-018",
+            "title": "Assembly Hall",
+            "creator": "Taarina Chandiramani",
+            "date": "2025-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "The grand assembly hall features ornate chandeliers, Italian marble floors, and European-style furniture. This space reflects the cosmopolitan tastes of the Holkar rulers.",
+            "keywords": ["interior", "hall", "chandelier", "marble", "colonial"],
+            "image_url": "https://images.unsplash.com/photo-1780245996835-90c0ac8bf4dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+            "metadata": {
+                "location": "Main Hall",
+                "material": "Italian Marble",
+                "period": "Late 19th Century"
+            },
+            "related_records": [],
+            "created_at": "2026-01-16T10:00:00Z"
+        },
+        {
+            "id": "obj-004",
+            "archive_id": "LB-025",
+            "title": "Rose Garden",
+            "creator": "Taarina Chandiramani",
+            "date": "2025-04",
+            "collection": "Lal Bagh",
+            "category": "Gardens",
+            "description": "The palace gardens feature symmetrical pathways, fountains, and seasonal plantings. The rose garden was personally designed by Maharani Ahilyabai Holkar.",
+            "keywords": ["garden", "landscape", "roses", "fountain", "heritage"],
+            "image_url": "https://images.unsplash.com/photo-1777620842997-bc178ed2599b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+            "metadata": {
+                "location": "East Gardens",
+                "area": "2 Acres",
+                "designed_by": "Maharani Ahilyabai Holkar"
+            },
+            "related_records": ["LB-018"],
+            "created_at": "2026-01-16T11:00:00Z"
+        }
+    ]
+    
+    await db.archive_objects.insert_many(archive_objects)
+    print(f"✓ Seeded {len(archive_objects)} archive objects")
+    
+    # Seed Voice Records
+    voices = [
+        {
+            "id": "voice-001",
+            "archive_id": "OH-001",
+            "name": "Hrishchand Mishra",
+            "role": "Caretaker",
+            "biography": "Hrishchand Mishra has served as the head caretaker of Rajwada Palace for over 35 years. His family has maintained the palace grounds for three generations, preserving traditional maintenance practices while adapting to modern conservation needs.",
+            "portrait_url": "https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "audio_url": None,
+            "transcript": "I remember when I first started working here as a young man. My father would tell me stories about the palace before independence. The wooden pillars, the stone carvings - everything has a story. We've seen the palace through fires, renovations, and restoration efforts. Every day, I walk through these corridors and feel the weight of history. My responsibility is not just to maintain the building, but to preserve the memory of what this place means to Indore.",
+            "highlighted_quote": "Every day, I walk through these corridors and feel the weight of history.",
+            "research_interests": [],
+            "related_objects": ["RJ-014", "RJ-022"],
+            "created_at": "2026-01-17T10:00:00Z"
+        },
+        {
+            "id": "voice-002",
+            "archive_id": "OH-002",
+            "name": "Ankit Verma",
+            "role": "Archival Researcher",
+            "biography": "Ankit Verma is an independent researcher specializing in Maratha architecture and heritage conservation. He has published extensively on the palaces of Central India and has been instrumental in documenting Rajwada's architectural evolution.",
+            "portrait_url": "https://images.pexels.com/photos/38281680/pexels-photo-38281680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "audio_url": None,
+            "transcript": "Rajwada represents a unique moment in Indian architectural history. It combines Maratha military architecture with Mughal decorative elements, creating something distinctly regional. What fascinates me is how the building has adapted over time - from royal residence to administrative center to cultural monument. Each layer tells us something about how Indore has evolved.",
+            "highlighted_quote": "Each layer tells us something about how Indore has evolved.",
+            "research_interests": ["Architecture", "Conservation", "Urban History"],
+            "related_objects": ["RJ-014", "RJ-022"],
+            "created_at": "2026-01-17T11:00:00Z"
+        },
+        {
+            "id": "voice-003",
+            "archive_id": "OH-003",
+            "name": "Pushyamitra Bhargava",
+            "role": "Mayor of Indore",
+            "biography": "Pushyamitra Bhargava served as Mayor of Indore from 2019 to 2024, during which time he championed several heritage conservation initiatives. His administration prioritized the preservation of the city's historic monuments while promoting sustainable urban development.",
+            "portrait_url": "https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            "audio_url": None,
+            "transcript": "As mayor, I see these palaces as more than historical monuments - they are living parts of our city. Rajwada sits at the heart of our busiest market. Every day, thousands of people pass by it. We need to balance conservation with accessibility, making sure these spaces remain relevant to contemporary life while preserving their historical significance.",
+            "highlighted_quote": "These palaces are living parts of our city.",
+            "research_interests": ["Urban Planning", "Heritage Policy", "Public Engagement"],
+            "related_objects": ["RJ-014", "RJ-022", "LB-018"],
+            "created_at": "2026-01-17T12:00:00Z"
+        }
+    ]
+    
+    await db.voices.insert_many(voices)
+    print(f"✓ Seeded {len(voices)} voice records")
+    
+    print("\n✅ Database seeding completed successfully!")
+    
+    client.close()
+
+if __name__ == "__main__":
+    asyncio.run(seed_database())
