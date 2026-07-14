@@ -1,0 +1,43 @@
+{
+  "summary": "AudioPlayer crash IS FIXED (no more ReferenceError, Voices page renders fully with all 4 rows, portraits, and play buttons). BUT audio playback still fails on all 4 players with MediaError code 4. Root cause identified: the Playwright Chromium build ships WITHOUT proprietary codecs — `audio.canPlayType('audio/mp4; codecs=\"mp4a.40.2\"')` returns '' (empty), and the direct decode fails with 'PipelineStatus::DEMUXER_ERROR_NO_SUPPORTED_STREAMS: FFmpegDemuxer: no supported streams'. The Blob URL rewrite therefore did NOT fix (and cannot fix) the audio issue — it only fixed the JS crash. Same failure occurs with the raw URL and with the blob URL. Files themselves are valid AAC-in-MP4 (ftypM4A, 11MB) — they will likely play in real Chrome / Safari / Edge, but the fix is unverifiable in this Playwright environment.",
+  "tested_scope": ["frontend"],
+  "passed": [
+    "Voices page loads without crash (no ReferenceError, no React error overlay on initial mount)",
+    "All 4 audio player containers render",
+    "All 4 portrait images load (naturalWidth > 0)",
+    "All 4 Play buttons are visible and clickable (aria-label toggles Play↔Pause)",
+    "Homepage still renders and all 4 homepage images load correctly",
+    "Blob URL is successfully created and assigned to audio.src (all 4 audio elements have src starting with 'blob:')",
+    "Loading/error state variables now exist in AudioPlayer (loading→false, no ReferenceError)"
+  ],
+  "failed": [
+    {
+      "area": "/voices — audio decoding on all 4 players",
+      "issue": "MediaError code 4 (MEDIA_ELEMENT_ERROR: Format error) on every audio element. duration = NaN, readyState = 0, networkState = 3 (NETWORK_NO_SOURCE). Error message from Chrome: 'PipelineStatus::DEMUXER_ERROR_NO_SUPPORTED_STREAMS: FFmpegDemuxer: no supported streams'. A red 'Uncaught runtime errors: ERROR - The element has no supported sources.' overlay appears on the /voices page from CRA's error dialog.",
+      "evidence": "Isolated test in same tab: canPlayType('audio/mp4')='maybe', canPlayType('audio/mp4; codecs=\"mp4a.40.2\"')='' (AAC unsupported). Direct URL test → error code 4. Blob URL test (identical to AudioPlayer.jsx logic) → error code 4 with msg 'PipelineStatus::DEMUXER_ERROR_NO_SUPPORTED_STREAMS'. Blob size 11121760 bytes, source file starts with valid ftypM4A/isom/iso2 MP4 header. Server sends content-type: audio/x-m4a.",
+      "priority": "HIGH"
+    },
+    {
+      "area": "AudioPlayer.jsx — Blob MIME override not applied",
+      "issue": "The code does `new Blob([blob], { type: 'audio/mp4' })` but in my probe test the resulting blob still reported type='audio/x-m4a'. Minor/informational — even when the MIME is forced to audio/mp4 the codec is still what fails, so this does not change the outcome. Consider removing the fetch+blob wrapper entirely; it adds an 11 MB memory copy and provides no benefit over `<audio src={audioUrl}>`.",
+      "evidence": "Playwright Blob probe: blobType field returned 'audio/x-m4a' after `new Blob([blob], {type:'audio/mp4'})`.",
+      "priority": "LOW"
+    },
+    {
+      "area": "/voices — archive data fetch console error",
+      "issue": "'Failed to load archive data: TypeError: Failed to fetch' still fires twice on mount (unchanged from iteration_10). Page still renders because it uses cached data on retry, but the noisy error remains.",
+      "evidence": "Console errors captured; identical stack to previous iteration.",
+      "priority": "LOW"
+    }
+  ],
+  "action_items": [
+    "The Blob-URL approach does NOT solve audio playback. The MediaError is a codec/demuxer failure, not a MIME-type or CORS issue. Recommend REVERTING AudioPlayer to a plain `<audio src={audioUrl} preload=\"metadata\">` — the fetch/blob wrapper is dead weight (11MB memcopy per file, no benefit).",
+    "The Playwright Chromium build used for testing lacks proprietary codecs (AAC), so this specific fix cannot be verified end-to-end in automated tests. Manual verification in real Chrome / Safari / Firefox is required. In real Chrome the AAC-in-MP4 files should play.",
+    "If audio must play in codec-limited browsers too, re-encode source files to a royalty-free codec (Opus in WebM or Vorbis in Ogg) and update audio_url in archive.json. Alternatively provide both mp4 and webm sources via <source> tags.",
+    "Consider hosting the audio files under the same origin (or ensure CORS + Range support), and running `qt-faststart`/`ffmpeg -movflags +faststart` so moov atom is at the beginning (current files have mdat before moov, though this is not the root cause here).",
+    "Suppress the CRA 'Uncaught runtime errors' red overlay in production, or catch the audio error in AudioPlayer's onError handler so it shows the graceful 'Audio unavailable' UI instead of the full-screen error dialog."
+  ],
+  "success_rate": {"backend": "not tested", "frontend": "Voices page renders 100% (crash fixed); audio playback 0/4 in test browser due to missing AAC codec"},
+  "retest_needed": true,
+  "full_testing_deferred": true
+}
