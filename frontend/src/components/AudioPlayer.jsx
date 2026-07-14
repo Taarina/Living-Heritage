@@ -13,23 +13,23 @@ const AudioPlayer = ({ audioUrl, testId }) => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
     }
-  }, []);
+  }, []); // audioRef and setCurrentTime are stable
   
   const handleLoadedMetadata = useCallback(() => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
       setHasError(false);
     }
-  }, []);
+  }, []); // audioRef, setDuration, setHasError are stable
   
   const handleEnded = useCallback(() => {
     setIsPlaying(false);
-  }, []);
+  }, []); // setIsPlaying is stable
   
   const handleError = useCallback(() => {
     setHasError(true);
     setIsPlaying(false);
-  }, []);
+  }, []); // setState functions are stable
   
   useEffect(() => {
     const audio = audioRef.current;
@@ -46,6 +46,7 @@ const AudioPlayer = ({ audioUrl, testId }) => {
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('error', handleError);
     };
+    // audioRef.current is intentionally not in deps - we use const audio = audioRef.current
   }, [handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError]);
   
   const togglePlay = () => {

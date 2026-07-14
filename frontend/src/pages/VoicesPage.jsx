@@ -22,6 +22,7 @@ const VoicesPage = () => {
       setVoices(organizedVoices);
       setIsLoaded(true);
     });
+    // loadArchiveData, getVoices, setVoices, setIsLoaded are all stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   

@@ -24,7 +24,7 @@ const TranscriptModal = ({ transcript, name, archiveId }) => {
         <div className="mt-6 space-y-4">
           <div className="prose prose-archive max-w-none">
             {transcript.split('\n\n').map((paragraph, index) => (
-              <p key={index} className="text-base text-archive-text/90 leading-relaxed mb-4">
+              <p key={`${archiveId}-para-${index}`} className="text-base text-archive-text/90 leading-relaxed mb-4">
                 {paragraph}
               </p>
             ))}

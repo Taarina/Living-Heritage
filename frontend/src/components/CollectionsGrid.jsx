@@ -43,17 +43,19 @@ const CollectionsGrid = () => {
               className="archival-drawer group"
             >
               <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary">
-                <img
-                  src={collection.image}
-                  alt={collection.name}
-                  loading="eager"
-                  crossOrigin="anonymous"
-                  className="archive-image w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `<div class="flex items-center justify-center h-full bg-archive-secondary text-archive-text/50"><span>${collection.name}</span></div>`;
-                  }}
-                />
+                {collection.image ? (
+                  <img
+                    src={collection.image}
+                    alt={collection.name}
+                    loading="eager"
+                    crossOrigin="anonymous"
+                    className="archive-image w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full bg-archive-secondary text-archive-text/50">
+                    <span>{collection.name}</span>
+                  </div>
+                )}
               </div>
               
               <div className="p-8 space-y-6">
