@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -11,22 +11,24 @@ const HomePage = () => {
   const [featured, setFeatured] = useState(null);
   const [collections, setCollections] = useState([]);
   
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [featuredRes, collectionsRes] = await Promise.all([
-          axios.get(`${API}/featured`),
-          axios.get(`${API}/collections`)
-        ]);
-        setFeatured(featuredRes.data);
-        setCollections(collectionsRes.data);
-      } catch (error) {
+  const fetchData = useCallback(async () => {
+    try {
+      const [featuredRes, collectionsRes] = await Promise.all([
+        axios.get(`${API}/featured`),
+        axios.get(`${API}/collections`)
+      ]);
+      setFeatured(featuredRes.data);
+      setCollections(collectionsRes.data);
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
         console.error('Error fetching data:', error);
       }
-    };
-    
+    }
+  }, [API]);
+  
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
   
   const scrollToContent = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
@@ -94,7 +96,7 @@ const HomePage = () => {
           <Link
             to="/collections/rajwada"
             data-testid={COLLECTIONS.rajwadaCard}
-            className="archival-drawer bg-white group"
+            className="archival-drawer bg-white group polaroid"
           >
             <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary relative photo-corners">
               <div className="corner-bl"></div>
@@ -106,7 +108,7 @@ const HomePage = () => {
               />
             </div>
             <div className="p-6 space-y-3">
-              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp">
+              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
                 Series I
               </p>
               <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Rajwada</h3>
@@ -119,7 +121,7 @@ const HomePage = () => {
           <Link
             to="/collections/lal-bagh"
             data-testid={COLLECTIONS.lalBaghCard}
-            className="archival-drawer bg-white group"
+            className="archival-drawer bg-white group polaroid"
           >
             <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary relative photo-corners">
               <div className="corner-bl"></div>
@@ -131,7 +133,7 @@ const HomePage = () => {
               />
             </div>
             <div className="p-6 space-y-3">
-              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp">
+              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
                 Series II
               </p>
               <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Lal Bagh</h3>
@@ -144,7 +146,7 @@ const HomePage = () => {
           <Link
             to="/voices"
             data-testid={COLLECTIONS.voicesCard}
-            className="archival-drawer bg-white group"
+            className="archival-drawer bg-white group polaroid"
           >
             <div className="archive-image-container aspect-[3/4] overflow-hidden bg-archive-secondary relative photo-corners">
               <div className="corner-bl"></div>
@@ -156,7 +158,7 @@ const HomePage = () => {
               />
             </div>
             <div className="p-6 space-y-3">
-              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp">
+              <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
                 Series III
               </p>
               <h3 className="text-2xl md:text-3xl font-serif text-archive-text">Voices</h3>
@@ -256,9 +258,9 @@ const HomePage = () => {
             <div className="space-y-3">
               <p className="text-xs tracking-widest uppercase text-archive-text/60">Research Interests</p>
               <div className="flex flex-wrap gap-2">
-                {['Digital Humanities', 'Museums', 'Archives', 'Material Culture', 'Oral History', 'Heritage Documentation', 'Public History', 'Digital Storytelling'].map((interest, idx) => (
+                {['Digital Humanities', 'Museums', 'Archives', 'Material Culture', 'Oral History', 'Heritage Documentation', 'Public History', 'Digital Storytelling'].map((interest) => (
                   <span
-                    key={idx}
+                    key={interest}
                     className="px-3 py-1 border border-archive-secondary text-xs tracking-wider text-archive-text/80 aged-edges"
                   >
                     {interest}

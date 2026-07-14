@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ArchiveViewer from '@/components/ArchiveViewer';
@@ -14,27 +14,41 @@ const CollectionDetailPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   
-  const collectionName = slug === 'rajwada' ? 'Rajwada' : slug === 'lal-bagh' ? 'Lal Bagh' : slug;
-  const series = slug === 'rajwada' ? 'Series I' : 'Series II';
+  // Determine collection details
+  let collectionName;
+  let series;
   
-  useEffect(() => {
-    const fetchObjects = async () => {
-      try {
-        const response = await axios.get(`${API}/archive-objects`, {
-          params: { collection: collectionName }
-        });
-        setObjects(response.data);
-        
-        // Extract unique categories
-        const cats = [...new Set(response.data.map(obj => obj.category).filter(Boolean))];
-        setCategories(cats);
-      } catch (error) {
+  if (slug === 'rajwada') {
+    collectionName = 'Rajwada';
+    series = 'Series I';
+  } else if (slug === 'lal-bagh') {
+    collectionName = 'Lal Bagh';
+    series = 'Series II';
+  } else {
+    collectionName = slug;
+    series = '';
+  }
+  
+  const fetchObjects = useCallback(async () => {
+    try {
+      const response = await axios.get(`${API}/archive-objects`, {
+        params: { collection: collectionName }
+      });
+      setObjects(response.data);
+      
+      // Extract unique categories
+      const uniqueCategories = [...new Set(response.data.map(obj => obj.category).filter(Boolean))];
+      setCategories(uniqueCategories);
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
         console.error('Error fetching objects:', error);
       }
-    };
-    
+    }
+  }, [API, collectionName]);
+  
+  useEffect(() => {
     fetchObjects();
-  }, [collectionName]);
+  }, [fetchObjects]);
   
   const filteredObjects = selectedCategory === 'all'
     ? objects

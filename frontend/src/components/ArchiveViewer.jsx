@@ -67,9 +67,9 @@ const ArchiveViewer = ({ object, onClose }) => {
                     <div className="space-y-2">
                       <p className="text-xs tracking-widest uppercase text-archive-text/60">Keywords</p>
                       <div className="flex flex-wrap gap-2">
-                        {object.keywords.map((keyword, idx) => (
+                        {object.keywords.map((keyword) => (
                           <span
-                            key={idx}
+                            key={keyword}
                             className="px-3 py-1 border border-archive-secondary text-xs tracking-wider text-archive-text/80"
                           >
                             {keyword}

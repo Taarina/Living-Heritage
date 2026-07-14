@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AudioPlayer from '@/components/AudioPlayer';
@@ -11,18 +11,21 @@ const VoicesPage = () => {
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
   
-  useEffect(() => {
-    const fetchVoices = async () => {
-      try {
-        const response = await axios.get(`${API}/voices`);
-        setVoices(response.data);
-      } catch (error) {
+  const fetchVoices = useCallback(async () => {
+    try {
+      const response = await axios.get(`${API}/voices`);
+      setVoices(response.data);
+    } catch (error) {
+      // Error handling - could integrate with error tracking service
+      if (process.env.NODE_ENV !== 'production') {
         console.error('Error fetching voices:', error);
       }
-    };
-    
+    }
+  }, [API]);
+  
+  useEffect(() => {
     fetchVoices();
-  }, []);
+  }, [fetchVoices]);
   
   return (
     <div className="min-h-screen pt-32 pb-24 page-content">
@@ -61,12 +64,10 @@ const VoicesPage = () => {
                         alt={voice.name}
                         className="w-full h-full object-cover vintage-photo"
                       />
-                      {/* Date stamp */}
                       <div className="date-stamp">
                         2026
                       </div>
                     </div>
-                    {/* Polaroid caption */}
                     <div className="polaroid-caption">
                       {voice.name}
                     </div>

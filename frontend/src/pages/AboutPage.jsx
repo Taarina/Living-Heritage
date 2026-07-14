@@ -71,9 +71,9 @@ const AboutPage = () => {
                     'Heritage Documentation',
                     'Public History',
                     'Digital Storytelling'
-                  ].map((interest, idx) => (
+                  ].map((interest) => (
                     <span
-                      key={idx}
+                      key={interest}
                       className="px-3 py-1 border border-archive-secondary text-xs tracking-wider text-archive-text/80 aged-edges"
                     >
                       {interest}

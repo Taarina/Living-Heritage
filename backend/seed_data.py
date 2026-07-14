@@ -3,14 +3,15 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from typing import Dict, List, Any
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-mongo_url = os.environ['MONGO_URL']
-db_name = os.environ['DB_NAME']
+mongo_url: str = os.environ['MONGO_URL']
+db_name: str = os.environ['DB_NAME']
 
-async def seed_database():
+async def seed_database() -> None:
     client = AsyncIOMotorClient(mongo_url)
     db = client[db_name]
     
@@ -20,7 +21,7 @@ async def seed_database():
     await db.voices.delete_many({})
     
     # Seed Collections
-    collections = [
+    collections: List[Dict[str, Any]] = [
         {
             "id": "coll-001",
             "series": "Series I",
@@ -51,7 +52,7 @@ async def seed_database():
     print(f"✓ Seeded {len(collections)} collections")
     
     # Seed Archive Objects
-    archive_objects = [
+    archive_objects: List[Dict[str, Any]] = [
         {
             "id": "obj-001",
             "archive_id": "RJ-014",
@@ -134,7 +135,7 @@ async def seed_database():
     print(f"✓ Seeded {len(archive_objects)} archive objects")
     
     # Seed Voice Records
-    voices = [
+    voices: List[Dict[str, Any]] = [
         {
             "id": "voice-001",
             "archive_id": "OH-001",

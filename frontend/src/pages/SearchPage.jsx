@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Search as SearchIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -12,7 +12,7 @@ const SearchPage = () => {
   const [results, setResults] = useState({ objects: [], voices: [] });
   const [isSearching, setIsSearching] = useState(false);
   
-  const handleSearch = async (e) => {
+  const handleSearch = useCallback(async (e) => {
     e.preventDefault();
     if (!query.trim()) return;
     
@@ -23,11 +23,13 @@ const SearchPage = () => {
       });
       setResults(response.data);
     } catch (error) {
-      console.error('Error searching:', error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error searching:', error);
+      }
     } finally {
       setIsSearching(false);
     }
-  };
+  }, [API, query]);
   
   const totalResults = results.objects.length + results.voices.length;
   

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { VOICES } from '@/constants/testIds';
 
@@ -8,13 +8,25 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
   
+  const handleTimeUpdate = useCallback(() => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  }, []);
+  
+  const handleLoadedMetadata = useCallback(() => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  }, []);
+  
+  const handleEnded = useCallback(() => {
+    setIsPlaying(false);
+  }, []);
+  
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    
-    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const handleLoadedMetadata = () => setDuration(audio.duration);
-    const handleEnded = () => setIsPlaying(false);
     
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
@@ -25,7 +37,7 @@ const AudioPlayer = ({ audioUrl, testId }) => {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, []);
+  }, [handleTimeUpdate, handleLoadedMetadata, handleEnded]);
   
   const togglePlay = () => {
     if (isPlaying) {

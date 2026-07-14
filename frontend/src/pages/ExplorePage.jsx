@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import axios from 'axios';
 import ArchiveViewer from '@/components/ArchiveViewer';
 import { ARCHIVE } from '@/constants/testIds';
@@ -23,7 +23,7 @@ const ExplorePage = () => {
     'Places'
   ];
   
-  const handleCategoryClick = async (category) => {
+  const handleCategoryClick = useCallback(async (category) => {
     setSelectedCategory(category);
     setIsLoading(true);
     
@@ -33,11 +33,13 @@ const ExplorePage = () => {
       });
       setObjects(response.data.objects || []);
     } catch (error) {
-      console.error('Error exploring:', error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error exploring:', error);
+      }
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [API]);
   
   return (
     <div className="min-h-screen pt-32 pb-24 page-content">
