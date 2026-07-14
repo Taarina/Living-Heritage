@@ -65,19 +65,32 @@ const AudioPlayer = ({ audioUrl, testId }) => {
   
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   
+  if (loading) {
+    return (
+      <div className="text-sm text-archive-text/50">
+        Loading audio...
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="text-sm text-red-600">
+        Audio unavailable: {error}
+      </div>
+    );
+  }
+  
   return (
     <div className="space-y-4" data-testid={testId || VOICES.audioPlayer}>
       <audio 
         ref={audioRef}
+        src={blobUrl}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
         preload="metadata"
-      >
-        <source src={audioUrl} type="audio/mp4" />
-        <source src={audioUrl} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
+      />
       
       <div className="flex items-center gap-6">
         <button
