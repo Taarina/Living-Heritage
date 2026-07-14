@@ -13,7 +13,9 @@ export const loadArchiveData = async () => {
     archiveCache = await response.json();
     return archiveCache;
   } catch (error) {
-    console.error('Failed to load archive data:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Failed to load archive data:', error);
+    }
     return {
       collections: [],
       archive_objects: [],

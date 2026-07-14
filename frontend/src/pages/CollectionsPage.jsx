@@ -8,10 +8,12 @@ const CollectionsPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
+    // Load archive data once on mount - imported functions are stable
     loadArchiveData().then(() => {
       setCollections(getCollections());
       setIsLoaded(true);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   const collectionImages = {

@@ -8,10 +8,12 @@ const VoicesPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
+    // Load archive data once on mount - imported functions are stable
     loadArchiveData().then(() => {
       setVoices(getVoices());
       setIsLoaded(true);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   if (!isLoaded) {

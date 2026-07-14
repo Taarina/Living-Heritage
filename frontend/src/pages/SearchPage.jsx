@@ -10,7 +10,9 @@ const SearchPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
+    // Load archive data once on mount - imported functions are stable
     loadArchiveData().then(() => setIsLoaded(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   const handleSearch = (e) => {

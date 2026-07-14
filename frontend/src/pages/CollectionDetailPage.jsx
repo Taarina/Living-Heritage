@@ -17,6 +17,7 @@ const CollectionDetailPage = () => {
   const series = slug === 'rajwada' ? 'Series I' : 'Series II';
   
   useEffect(() => {
+    // Reload when collection changes - imported functions are stable
     loadArchiveData().then(() => {
       const collectionObjects = getArchiveObjects(collectionName);
       setObjects(collectionObjects);
@@ -26,6 +27,7 @@ const CollectionDetailPage = () => {
       setCategories(uniqueCategories);
       setIsLoaded(true);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collectionName]);
   
   const filteredObjects = selectedCategory === 'all'
