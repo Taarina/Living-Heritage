@@ -320,6 +320,106 @@ async def seed_database() -> None:
             },
             "related_records": ["LB-003"],
             "created_at": "2026-01-18T14:00:00Z"
+        },
+        {
+            "id": "obj-015",
+            "archive_id": "LB-006",
+            "title": "Ornate Vaulted Ceiling with Peacock Murals",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "Spectacular barrel-vaulted ceiling adorned with painted peacock motifs in recessed arched panels, flanked by delicate botanical garlands. The baroque plasterwork features Greek key patterns and ornamental borders. The dual peacocks symbolize royalty and beauty in Indian iconography, integrated here within European architectural vocabulary, exemplifying the Indo-European aesthetic of the palace interiors.",
+            "keywords": ["ceiling", "peacock", "murals", "baroque", "plasterwork", "interiors", "painting"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/fivvtlk7_Screenshot%202026-07-13%20204741.png",
+            "metadata": {
+                "location": "Main Corridor",
+                "style": "Baroque European with Indian motifs",
+                "period": "Late 19th Century",
+                "technique": "Fresco painting, ornamental plaster"
+            },
+            "related_records": ["LB-007"],
+            "created_at": "2026-01-19T10:00:00Z"
+        },
+        {
+            "id": "obj-016",
+            "archive_id": "LB-007",
+            "title": "Gilded Reception Hall",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "The palace's grand reception hall displays opulent baroque decoration with gilded stucco work, faux marble pilasters, and an elaborate coffered ceiling. French doors open to garden terraces, while period furniture and Persian carpets complete the formal European salon aesthetic. Velvet rope barriers indicate its current museum status. The room reflects the Holkar court's adoption of European palatial fashion.",
+            "keywords": ["reception", "hall", "baroque", "gilded", "marble", "furniture", "interiors"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/3u54htzy_Screenshot%202026-07-13%20204759.png",
+            "metadata": {
+                "location": "Reception Hall / Durbar Room",
+                "style": "French Baroque",
+                "features": "Gilded stucco, coffered ceiling, marble columns",
+                "current_use": "Museum display"
+            },
+            "related_records": ["LB-006"],
+            "created_at": "2026-01-19T11:00:00Z"
+        },
+        {
+            "id": "obj-017",
+            "archive_id": "LB-008",
+            "title": "Conservation Display in Entrance Hall",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Conservation",
+            "description": "Two informational display boards documenting ongoing conservation efforts stand in the marble entrance hall beneath a historic portrait and ornate Corinthian column. The panels show before-and-after photographs of restoration work, illustrating the palace's transformation from deterioration to preservation. This documentation makes visible the complex conservation process required to maintain such heritage structures.",
+            "keywords": ["conservation", "restoration", "display", "documentation", "heritage", "preservation"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/5e843pz0_Screenshot%202026-07-13%20204824.png",
+            "metadata": {
+                "location": "Main Entrance Hall",
+                "conservation_authority": "Archaeological Survey of India",
+                "documentation_type": "Photo panels",
+                "period": "21st Century conservation"
+            },
+            "related_records": ["LB-009"],
+            "created_at": "2026-01-19T12:00:00Z"
+        },
+        {
+            "id": "obj-018",
+            "archive_id": "LB-009",
+            "title": "Conservation Panel - Periodic Interiors",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Conservation",
+            "description": "Detailed conservation documentation panel titled 'Conservation of Periodic Interiors - Lal Bagh Palace' displaying comparative photographs of restoration work. The panel illustrates conservation of doorways, entrance porches, wall treatments, and architectural elements. The before-and-after images document the meticulous work required to restore the palace's late 19th-century European-style interiors while preserving historical authenticity.",
+            "keywords": ["conservation", "restoration", "interiors", "documentation", "heritage", "periodic"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/6kjwuzju_Screenshot%202026-07-13%20204858.png",
+            "metadata": {
+                "location": "Entrance Hall",
+                "panel_title": "Conservation of Periodic Interiors",
+                "documentation": "Before/after restoration photos",
+                "conservation_scope": "Doorways, porches, walls, architectural details"
+            },
+            "related_records": ["LB-008"],
+            "created_at": "2026-01-19T13:00:00Z"
+        },
+        {
+            "id": "obj-019",
+            "archive_id": "LB-010",
+            "title": "Stained Glass Window - Holkar Royal Crest",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Objects",
+            "description": "Semicircular stained glass fanlight displaying the Holkar royal coat of arms in vibrant colored glass. The heraldic crest features traditional Maratha symbols beneath a royal crown, executed in European stained glass technique. Set within a carved stone archway and dark wooden frame, this transom window exemplifies the fusion of Indian royal iconography with Victorian decorative arts favored by the Holkar dynasty.",
+            "keywords": ["stained glass", "royal crest", "holkar", "heraldry", "window", "decorative arts"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kgnkzlac_Screenshot%202026-07-13%20205015.png",
+            "metadata": {
+                "location": "Main Doorway",
+                "technique": "Stained glass",
+                "style": "Victorian with Indian royal heraldry",
+                "dynasty": "Holkar"
+            },
+            "related_records": ["LB-007"],
+            "created_at": "2026-01-19T14:00:00Z"
         }
     ]
     
