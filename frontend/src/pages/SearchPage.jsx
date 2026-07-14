@@ -1,40 +1,51 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { loadArchiveData, searchArchive } from '@/utils/archiveData';
 import { SEARCH, ARCHIVE } from '@/constants/testIds';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState({ objects: [], voices: [] });
-  const [isSearching, setIsSearching] = useState(false);
+  const [results, setResults] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   
-  const handleSearch = useCallback(async (e) => {
+  useEffect(() => {
+    loadArchiveData().then(() => setIsLoaded(true));
+  }, []);
+  
+  const handleSearch = (e) => {
     e.preventDefault();
-    if (!query.trim()) return;
-    
-    setIsSearching(true);
-    try {
-      const response = await axios.get(`${API}/search`, {
-        params: { q: query }
-      });
-      setResults(response.data);
-    } catch (error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Error searching:', error);
-      }
-    } finally {
-      setIsSearching(false);
+    if (!query.trim()) {
+      setResults([]);
+      return;
     }
-  }, [API, query]);
+    
+    const searchResults = searchArchive(query);
+    setResults(searchResults);
+  };
   
-  const totalResults = results.objects.length + results.voices.length;
+  const handleInputChange = (e) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+    
+    // Instant search
+    if (newQuery.trim()) {
+      setResults(searchArchive(newQuery));
+    } else {
+      setResults([]);
+    }
+  };
+  
+  const objects = results.filter(r => r.type === 'object');
+  const voices = results.filter(r => r.type === 'voice');
+  const totalResults = results.length;
+  
+  if (!isLoaded) {
+    return null;
+  }
   
   return (
-    <div className="min-h-screen pt-32 pb-24 page-content">
+    <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-4xl mx-auto space-y-12">
           <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
@@ -47,54 +58,52 @@ const SearchPage = () => {
               <input
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={handleInputChange}
                 data-testid={SEARCH.searchInput}
                 placeholder="Search objects, collections, voices, metadata..."
                 className="w-full px-6 py-4 border border-archive-secondary bg-white focus:border-archive-olive focus:outline-none text-base text-archive-text placeholder:text-archive-text/40"
+                autoComplete="off"
               />
               <button
                 type="submit"
                 data-testid={SEARCH.searchButton}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-archive-text hover:text-archive-olive transition-smooth"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-archive-text hover:text-archive-olive transition-fast"
+                aria-label="Search"
               >
                 <SearchIcon size={20} />
               </button>
             </div>
-            
-            {isSearching && (
-              <p className="text-sm text-archive-text/60 handwritten">Searching through archives...</p>
-            )}
           </form>
           
           {/* Results */}
-          {query && !isSearching && (
+          {query && (
             <div data-testid={SEARCH.searchResults} className="space-y-12 pt-12">
               {totalResults > 0 ? (
                 <>
                   <p className="text-base text-archive-text/70 photo-annotation">
-                    Found {totalResults} result{totalResults !== 1 ? 's' : ''} for “{query}”
+                    Found {totalResults} result{totalResults !== 1 ? 's' : ''} for "{query}"
                   </p>
                   
                   {/* Archive Objects */}
-                  {results.objects.length > 0 && (
+                  {objects.length > 0 && (
                     <div className="space-y-8">
                       <h2 className="text-2xl font-serif text-archive-text border-b border-archive-secondary pb-3">
-                        Archive Objects ({results.objects.length})
+                        Archive Objects ({objects.length})
                       </h2>
                       
                       <div className="grid md:grid-cols-2 gap-8">
-                        {results.objects.map((object) => (
+                        {objects.map((object) => (
                           <Link
                             key={object.id}
                             to={`/archive/${object.id}`}
                             data-testid={ARCHIVE.objectCard}
                             className="polaroid group"
-                            data-caption={object.title}
                           >
                             <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary relative">
                               <img
                                 src={object.image_url}
                                 alt={object.title}
+                                loading="lazy"
                                 className="archive-image w-full h-full object-cover"
                               />
                               <div className="date-stamp">
@@ -119,24 +128,25 @@ const SearchPage = () => {
                   )}
                   
                   {/* Voice Records */}
-                  {results.voices.length > 0 && (
+                  {voices.length > 0 && (
                     <div className="space-y-8">
                       <h2 className="text-2xl font-serif text-archive-text border-b border-archive-secondary pb-3">
-                        Voices ({results.voices.length})
+                        Voices ({voices.length})
                       </h2>
                       
                       <div className="space-y-6">
-                        {results.voices.map((voice) => (
+                        {voices.map((voice) => (
                           <Link
                             key={voice.id}
                             to="/voices"
-                            className="block border border-archive-secondary p-6 hover:border-archive-text/30 transition-smooth vintage-shadow bg-white"
+                            className="block border border-archive-secondary p-6 hover:border-archive-text/30 transition-fast vintage-shadow bg-white"
                           >
                             <div className="flex gap-6">
                               <div className="w-20 h-20 bg-archive-secondary overflow-hidden flex-shrink-0 photo-corners relative">
                                 <img
                                   src={voice.portrait_url}
                                   alt={voice.name}
+                                  loading="lazy"
                                   className="w-full h-full object-cover vintage-photo"
                                 />
                               </div>
@@ -161,7 +171,7 @@ const SearchPage = () => {
               ) : (
                 <div className="text-center py-24 space-y-6 aged-edges p-12">
                   <p className="text-base text-archive-text/60">
-                    No results found for “{query}”
+                    No results found for "{query}"
                   </p>
                   <p className="text-sm text-archive-text/40 handwritten">
                     Try different keywords or browse our collections.

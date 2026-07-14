@@ -1,0 +1,945 @@
+{
+  "collections": [
+    {
+      "id": "coll-001",
+      "series": "Series I",
+      "name": "Rajwada",
+      "description": "Architectural documentation, public spaces, and material culture of Rajwada Palace.",
+      "categories": [
+        "Architecture",
+        "Public Space",
+        "Objects",
+        "Interpretation"
+      ],
+      "object_count": 0
+    },
+    {
+      "id": "coll-002",
+      "series": "Series II",
+      "name": "Lal Bagh",
+      "description": "Interior spaces, gardens, conservation records, and decorative objects from Lal Bagh Palace.",
+      "categories": [
+        "Interiors",
+        "Gardens",
+        "Conservation",
+        "Objects"
+      ],
+      "object_count": 0
+    },
+    {
+      "id": "coll-003",
+      "series": "Series III",
+      "name": "Voices",
+      "description": "Oral histories from caretakers, researchers, and community members.",
+      "categories": [
+        "Oral Histories"
+      ],
+      "object_count": 0
+    }
+  ],
+  "archive_objects": [
+    {
+      "id": "obj-001",
+      "archive_id": "RJ-001",
+      "title": "Heritage Plaque",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Interpretation",
+      "description": "Official Archaeological Survey of India plaque documenting Rajwada's historical significance. The blue heritage marker contains detailed information in Hindi about the palace's construction, fire damage in 1984, and subsequent restoration efforts under state protection.",
+      "keywords": [
+        "heritage",
+        "plaque",
+        "conservation",
+        "documentation",
+        "archaeology"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/ijced69t_Screenshot%202026-07-13%20200934.png",
+      "metadata": {
+        "location": "Main Entrance",
+        "authority": "Directorate of Archaeology, Madhya Pradesh",
+        "type": "Heritage Marker"
+      },
+      "related_records": [],
+      "created_at": "2026-01-15T10:00:00Z"
+    },
+    {
+      "id": "obj-002",
+      "archive_id": "RJ-002",
+      "title": "Protected Monument Notice",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Conservation",
+      "description": "Bilingual protected monument signage (Hindi and English) declaring Rajwada as a state heritage site under the Madhya Pradesh Ancient Monuments Act, 1975. The plaque outlines prohibited activities and conservation regulations established in 1999.",
+      "keywords": [
+        "conservation",
+        "protection",
+        "monument",
+        "heritage",
+        "regulations"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/lb8j5cty_Screenshot%202026-07-13%20201013.png",
+      "metadata": {
+        "location": "Entrance Wall",
+        "legislation": "MP Ancient Monuments Act 1975",
+        "protected_since": "1999"
+      },
+      "related_records": [
+        "RJ-001"
+      ],
+      "created_at": "2026-01-15T11:00:00Z"
+    },
+    {
+      "id": "obj-003",
+      "archive_id": "RJ-003",
+      "title": "Stone Wall Detail with Commemorative Plaque",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "Weathered stone masonry wall featuring an ornate carved wooden bracket and a commemorative plaque marking Rajwada Indore. The juxtaposition of rough stone, intricate carvings, and official documentation illustrates layers of the palace's material history.",
+      "keywords": [
+        "stonework",
+        "wall",
+        "plaque",
+        "carving",
+        "masonry"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/3sd2e2mc_Screenshot%202026-07-13%20201029.png",
+      "metadata": {
+        "location": "Exterior Wall",
+        "materials": "Stone, Wood",
+        "period": "18th Century with later additions"
+      },
+      "related_records": [
+        "RJ-001",
+        "RJ-002"
+      ],
+      "created_at": "2026-01-16T10:00:00Z"
+    },
+    {
+      "id": "obj-004",
+      "archive_id": "RJ-004",
+      "title": "Ornate Wooden Gateway",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "Monumental wooden door with distinctive scalloped cusped arch, demonstrating the fusion of Maratha and Mughal architectural traditions. The massive teak panels are studded with iron bolts, while the surrounding stonework displays intricate floral and geometric carvings. Visitor information plaques indicate current timings.",
+      "keywords": [
+        "door",
+        "gateway",
+        "arch",
+        "woodwork",
+        "carving",
+        "entrance"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/k3rkgtj0_Screenshot%202026-07-13%20201041.png",
+      "metadata": {
+        "location": "Main Entrance",
+        "material": "Teak wood, Iron, Stone",
+        "style": "Maratha-Mughal fusion"
+      },
+      "related_records": [
+        "RJ-005"
+      ],
+      "created_at": "2026-01-16T11:00:00Z"
+    },
+    {
+      "id": "obj-005",
+      "archive_id": "RJ-005",
+      "title": "Palace Facade",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "The iconic seven-story facade of Rajwada Palace rising above Indore's Rajwada Chowk. Built in 1747 by Holkar rulers, the structure showcases Maratha architectural grandeur with its projecting balconies, ornate jharokhas, and distinctive cylindrical towers. The palace combines stone lower stories with upper wooden galleries, exemplifying Indo-Saracenic palace architecture.",
+      "keywords": [
+        "facade",
+        "palace",
+        "architecture",
+        "holkar",
+        "towers",
+        "heritage"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/p07kwv9m_Screenshot%202026-07-13%20201051.png",
+      "metadata": {
+        "location": "Rajwada Chowk",
+        "height": "Seven Stories",
+        "built": "1747",
+        "dynasty": "Holkar"
+      },
+      "related_records": [
+        "RJ-004"
+      ],
+      "created_at": "2026-01-17T10:00:00Z"
+    },
+    {
+      "id": "obj-006",
+      "archive_id": "RJ-006",
+      "title": "Interior Courtyard Through Pillars",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "View of the inner courtyard framed by thick stone pillars with carved brackets and cusped arches. The multi-story courtyard showcases the palace's layered architectural composition, with light filtering through successive archways. The interplay of shadow and light emphasizes the depth of Maratha palatial design.",
+      "keywords": [
+        "courtyard",
+        "pillars",
+        "arches",
+        "interior",
+        "perspective"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uvayhis0_Screenshot%202026-07-13%20202745.png",
+      "metadata": {
+        "location": "Inner Courtyard",
+        "material": "Stone",
+        "architectural_feature": "Multi-story arcade"
+      },
+      "related_records": [
+        "RJ-007"
+      ],
+      "created_at": "2026-01-17T11:00:00Z"
+    },
+    {
+      "id": "obj-007",
+      "archive_id": "RJ-007",
+      "title": "Stone Corridor with Scalloped Arches",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "A monumental stone corridor extending through successive cusped arches creates a dramatic vanishing point. The weathered stone pillars with carved capitals demonstrate traditional Maratha construction techniques. The repetitive archways create a rhythmic architectural sequence typical of 18th-century palace design.",
+      "keywords": [
+        "corridor",
+        "arches",
+        "perspective",
+        "stone",
+        "pillars"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/cz6ck6ax_Screenshot%202026-07-13%20202814.png",
+      "metadata": {
+        "location": "Main Corridor",
+        "material": "Stone",
+        "architectural_style": "Maratha"
+      },
+      "related_records": [
+        "RJ-006",
+        "RJ-008"
+      ],
+      "created_at": "2026-01-17T12:00:00Z"
+    },
+    {
+      "id": "obj-008",
+      "archive_id": "RJ-008",
+      "title": "Carved Archway Detail",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Architecture",
+      "description": "Close perspective of interior archways revealing intricate stone carving and layered cusped arches. The weathered stone surfaces show traces of past restoration work. This view captures the palace's architectural vocabulary of repeated scalloped forms and ornate capitals that define Holkar period architecture.",
+      "keywords": [
+        "archway",
+        "carving",
+        "detail",
+        "stone",
+        "cusped arch"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/a7hrczhl_Screenshot%202026-07-13%20202912.png",
+      "metadata": {
+        "location": "Interior Arcade",
+        "material": "Carved Stone",
+        "condition": "Weathered, partially restored"
+      },
+      "related_records": [
+        "RJ-007"
+      ],
+      "created_at": "2026-01-17T13:00:00Z"
+    },
+    {
+      "id": "obj-009",
+      "archive_id": "RJ-009",
+      "title": "Open Courtyard",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-03",
+      "collection": "Rajwada",
+      "category": "Public Space",
+      "description": "The palace's central open courtyard showing the contrast between white-plastered and exposed sandstone sections. Large cusped arches define the ground level, while upper stories display continuous arcaded galleries. This space served as the main ceremonial and public gathering area of the palace complex.",
+      "keywords": [
+        "courtyard",
+        "public space",
+        "arches",
+        "plaza",
+        "ceremonial"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/tiia80mb_Screenshot%202026-07-13%20202948.png",
+      "metadata": {
+        "location": "Central Courtyard",
+        "function": "Ceremonial space",
+        "materials": "Sandstone, plaster"
+      },
+      "related_records": [
+        "RJ-006"
+      ],
+      "created_at": "2026-01-17T14:00:00Z"
+    },
+    {
+      "id": "obj-010",
+      "archive_id": "LB-001",
+      "title": "Protected Monument Heritage Plaque",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Conservation",
+      "description": "Official Archaeological Survey of India protected monument marker set within the lush gardens of Lal Bagh Palace. The bilingual plaque (Hindi and English) documents the palace's historical significance and conservation status under state heritage protection. The surrounding mature trees and vegetation emphasize the palace's integration with landscape design.",
+      "keywords": [
+        "heritage",
+        "plaque",
+        "conservation",
+        "gardens",
+        "protected monument"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/hx2hlolr_Screenshot%202026-07-13%20204453.png",
+      "metadata": {
+        "location": "Palace Gardens",
+        "authority": "Archaeological Survey of India",
+        "type": "Heritage Marker"
+      },
+      "related_records": [],
+      "created_at": "2026-01-18T10:00:00Z"
+    },
+    {
+      "id": "obj-011",
+      "archive_id": "LB-002",
+      "title": "Entrance Information Board",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interpretation",
+      "description": "Blue informational plaque at the palace entrance, positioned against corrugated fencing and mature tree canopy. The weathered signage and informal entrance setting document the palace's current state as a protected heritage site undergoing preservation, contrasting with its historical grandeur.",
+      "keywords": [
+        "entrance",
+        "signage",
+        "information",
+        "conservation",
+        "access"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/qjp0s4lw_Screenshot%202026-07-13%20204513.png",
+      "metadata": {
+        "location": "Service Entrance",
+        "condition": "Active conservation site",
+        "type": "Informational marker"
+      },
+      "related_records": [
+        "LB-001"
+      ],
+      "created_at": "2026-01-18T11:00:00Z"
+    },
+    {
+      "id": "obj-012",
+      "archive_id": "LB-003",
+      "title": "Palace Gate with Heritage Signage",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Architecture",
+      "description": "View of the ornate Victorian-style iron gates framed by white neoclassical pillars. The blue Lal Bagh Palace identification board (in Hindi and English) marks this entrance. The juxtaposition of European architectural elements with Indian landscaping reflects the cosmopolitan aesthetic of the Holkar rulers.",
+      "keywords": [
+        "gate",
+        "entrance",
+        "iron work",
+        "pillars",
+        "signage",
+        "architecture"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/lukciat5_Screenshot%202026-07-13%20204526.png",
+      "metadata": {
+        "location": "Main Gate",
+        "style": "Victorian Indo-European",
+        "materials": "Iron, Stone, Plaster"
+      },
+      "related_records": [
+        "LB-005"
+      ],
+      "created_at": "2026-01-18T12:00:00Z"
+    },
+    {
+      "id": "obj-013",
+      "archive_id": "LB-004",
+      "title": "Garden Heritage Marker",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Gardens",
+      "description": "Blue heritage information plaque positioned within the palace's formal gardens, featuring pink paved pathways, manicured lawns, and ornamental plantings. The marker provides historical context about Maharaja Tukoji Rao Holkar II's construction of the palace (1886-1921) and documents the evolution of the gardens as part of the palace's European-inspired design.",
+      "keywords": [
+        "gardens",
+        "landscape",
+        "heritage",
+        "plaque",
+        "pathways",
+        "conservation"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/coob0gtq_Screenshot%202026-07-13%20204656.png",
+      "metadata": {
+        "location": "Formal Gardens",
+        "period": "Late 19th Century",
+        "landscape_style": "European formal garden"
+      },
+      "related_records": [
+        "LB-001"
+      ],
+      "created_at": "2026-01-18T13:00:00Z"
+    },
+    {
+      "id": "obj-014",
+      "archive_id": "LB-005",
+      "title": "Main Gateway Entrance",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Architecture",
+      "description": "The monumental entrance to Lal Bagh Palace featuring four imposing white neoclassical columns topped with carved lion sculptures symbolizing royal authority. The ornate Victorian wrought-iron gates display intricate scrollwork. Behind, the tree-lined avenue creates a ceremonial approach typical of European palace design, reflecting Maharaja Tukoji Rao Holkar II's vision of a modern Indo-European palace.",
+      "keywords": [
+        "gateway",
+        "entrance",
+        "lions",
+        "pillars",
+        "gates",
+        "neoclassical",
+        "architecture"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uzk1qfq2_Screenshot%202026-07-13%20204708.png",
+      "metadata": {
+        "location": "Main Entrance",
+        "built": "1886-1921",
+        "style": "Neoclassical European",
+        "ruler": "Maharaja Tukoji Rao Holkar II"
+      },
+      "related_records": [
+        "LB-003"
+      ],
+      "created_at": "2026-01-18T14:00:00Z"
+    },
+    {
+      "id": "obj-015",
+      "archive_id": "LB-006",
+      "title": "Ornate Vaulted Ceiling with Peacock Murals",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "Spectacular barrel-vaulted ceiling adorned with painted peacock motifs in recessed arched panels, flanked by delicate botanical garlands. The baroque plasterwork features Greek key patterns and ornamental borders. The dual peacocks symbolize royalty and beauty in Indian iconography, integrated here within European architectural vocabulary, exemplifying the Indo-European aesthetic of the palace interiors.",
+      "keywords": [
+        "ceiling",
+        "peacock",
+        "murals",
+        "baroque",
+        "plasterwork",
+        "interiors",
+        "painting"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/fivvtlk7_Screenshot%202026-07-13%20204741.png",
+      "metadata": {
+        "location": "Main Corridor",
+        "style": "Baroque European with Indian motifs",
+        "period": "Late 19th Century",
+        "technique": "Fresco painting, ornamental plaster"
+      },
+      "related_records": [
+        "LB-007"
+      ],
+      "created_at": "2026-01-19T10:00:00Z"
+    },
+    {
+      "id": "obj-016",
+      "archive_id": "LB-007",
+      "title": "Gilded Reception Hall",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "The palace's grand reception hall displays opulent baroque decoration with gilded stucco work, faux marble pilasters, and an elaborate coffered ceiling. French doors open to garden terraces, while period furniture and Persian carpets complete the formal European salon aesthetic. Velvet rope barriers indicate its current museum status. The room reflects the Holkar court's adoption of European palatial fashion.",
+      "keywords": [
+        "reception",
+        "hall",
+        "baroque",
+        "gilded",
+        "marble",
+        "furniture",
+        "interiors"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/3u54htzy_Screenshot%202026-07-13%20204759.png",
+      "metadata": {
+        "location": "Reception Hall / Durbar Room",
+        "style": "French Baroque",
+        "features": "Gilded stucco, coffered ceiling, marble columns",
+        "current_use": "Museum display"
+      },
+      "related_records": [
+        "LB-006"
+      ],
+      "created_at": "2026-01-19T11:00:00Z"
+    },
+    {
+      "id": "obj-017",
+      "archive_id": "LB-008",
+      "title": "Conservation Display in Entrance Hall",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Conservation",
+      "description": "Two informational display boards documenting ongoing conservation efforts stand in the marble entrance hall beneath a historic portrait and ornate Corinthian column. The panels show before-and-after photographs of restoration work, illustrating the palace's transformation from deterioration to preservation. This documentation makes visible the complex conservation process required to maintain such heritage structures.",
+      "keywords": [
+        "conservation",
+        "restoration",
+        "display",
+        "documentation",
+        "heritage",
+        "preservation"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/5e843pz0_Screenshot%202026-07-13%20204824.png",
+      "metadata": {
+        "location": "Main Entrance Hall",
+        "conservation_authority": "Archaeological Survey of India",
+        "documentation_type": "Photo panels",
+        "period": "21st Century conservation"
+      },
+      "related_records": [
+        "LB-009"
+      ],
+      "created_at": "2026-01-19T12:00:00Z"
+    },
+    {
+      "id": "obj-018",
+      "archive_id": "LB-009",
+      "title": "Conservation Panel - Periodic Interiors",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Conservation",
+      "description": "Detailed conservation documentation panel titled 'Conservation of Periodic Interiors - Lal Bagh Palace' displaying comparative photographs of restoration work. The panel illustrates conservation of doorways, entrance porches, wall treatments, and architectural elements. The before-and-after images document the meticulous work required to restore the palace's late 19th-century European-style interiors while preserving historical authenticity.",
+      "keywords": [
+        "conservation",
+        "restoration",
+        "interiors",
+        "documentation",
+        "heritage",
+        "periodic"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/6kjwuzju_Screenshot%202026-07-13%20204858.png",
+      "metadata": {
+        "location": "Entrance Hall",
+        "panel_title": "Conservation of Periodic Interiors",
+        "documentation": "Before/after restoration photos",
+        "conservation_scope": "Doorways, porches, walls, architectural details"
+      },
+      "related_records": [
+        "LB-008"
+      ],
+      "created_at": "2026-01-19T13:00:00Z"
+    },
+    {
+      "id": "obj-019",
+      "archive_id": "LB-010",
+      "title": "Stained Glass Window - Holkar Royal Crest",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Objects",
+      "description": "Semicircular stained glass fanlight displaying the Holkar royal coat of arms in vibrant colored glass. The heraldic crest features traditional Maratha symbols beneath a royal crown, executed in European stained glass technique. Set within a carved stone archway and dark wooden frame, this transom window exemplifies the fusion of Indian royal iconography with Victorian decorative arts favored by the Holkar dynasty.",
+      "keywords": [
+        "stained glass",
+        "royal crest",
+        "holkar",
+        "heraldry",
+        "window",
+        "decorative arts"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kgnkzlac_Screenshot%202026-07-13%20205015.png",
+      "metadata": {
+        "location": "Main Doorway",
+        "technique": "Stained glass",
+        "style": "Victorian with Indian royal heraldry",
+        "dynasty": "Holkar"
+      },
+      "related_records": [
+        "LB-007"
+      ],
+      "created_at": "2026-01-19T14:00:00Z"
+    },
+    {
+      "id": "obj-020",
+      "archive_id": "LB-011",
+      "title": "Painted Ceiling Dome - Classical Fresco",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "Monumental oval ceiling fresco depicting classical mythological figures floating amid clouds in the tradition of European baroque ceiling painting. The central composition features deities and cherubs in dynamic poses, rendered in soft pastels of blue, pink, and gold. The fresco is surrounded by an elaborate gilded stucco frame with acanthus leaf molding and three-dimensional floral reliefs, demonstrating the palace's commitment to European artistic traditions.",
+      "keywords": [
+        "ceiling",
+        "fresco",
+        "painting",
+        "baroque",
+        "mythology",
+        "gilded",
+        "plasterwork"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/9l5oj847_Screenshot%202026-07-13%20205259.png",
+      "metadata": {
+        "location": "Main Durbar Hall",
+        "technique": "Ceiling fresco",
+        "style": "European Baroque",
+        "subject": "Classical mythology"
+      },
+      "related_records": [
+        "LB-012"
+      ],
+      "created_at": "2026-01-20T10:00:00Z"
+    },
+    {
+      "id": "obj-021",
+      "archive_id": "LB-012",
+      "title": "Grand Durbar Hall with Throne",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "The palace's ceremonial throne room showcasing the apex of Indo-European palatial design. The room features the painted dome ceiling with mythological frescoes, massive Belgian crystal chandeliers, and mint-green walls adorned with gilded rococo decorations. The royal throne sits elevated on a dais beneath purple velvet canopy drapery. Period furniture arranged on intricate carpets creates formal reception spaces. This hall served as the primary ceremonial and state function space of the Holkar court.",
+      "keywords": [
+        "durbar",
+        "throne room",
+        "ceremonial",
+        "chandelier",
+        "baroque",
+        "royal",
+        "state room"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/bfzminca_Screenshot%202026-07-13%20205406.png",
+      "metadata": {
+        "location": "Main Durbar Hall",
+        "function": "State ceremonies and audiences",
+        "style": "French Baroque/Rococo",
+        "features": "Throne dais, crystal chandeliers, painted ceiling"
+      },
+      "related_records": [
+        "LB-011",
+        "LB-007"
+      ],
+      "created_at": "2026-01-20T11:00:00Z"
+    },
+    {
+      "id": "obj-022",
+      "archive_id": "LB-013",
+      "title": "Portrait Gallery with Marble Fireplace",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "Intimate portrait gallery displaying oil paintings of Holkar family members in gilded frames against pale green walls. The room centers on an ornately carved white marble fireplace with a functioning hearth. A magnificent Belgian crystal chandelier illuminates the space, while fluted Corinthian columns and gilded rococo wall decorations frame the portraits. The painted floor covering displays baroque floral patterns. This room served as a private reception and family portrait gallery.",
+      "keywords": [
+        "portrait",
+        "gallery",
+        "fireplace",
+        "marble",
+        "chandelier",
+        "family",
+        "paintings"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/d6e1gesq_Screenshot%202026-07-13%20205451.png",
+      "metadata": {
+        "location": "Portrait Gallery Room",
+        "features": "Marble fireplace, family portraits, crystal chandelier",
+        "style": "European Rococo",
+        "function": "Private reception and portrait display"
+      },
+      "related_records": [
+        "LB-014"
+      ],
+      "created_at": "2026-01-20T12:00:00Z"
+    },
+    {
+      "id": "obj-023",
+      "archive_id": "LB-014",
+      "title": "Portrait Gallery - Alternate View",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "Another perspective of the portrait gallery revealing the room's extensive collection of royal family portraits in elaborate gilded frames. The walls display intricate gold-leaf rococo decorations cascading between the paintings. The crystal chandelier and period furniture create an elegant salon atmosphere. The asymmetrical arrangement of portraits of varying sizes demonstrates Victorian gallery hanging practices, while the ornate gilded swags and cartouches frame each artwork.",
+      "keywords": [
+        "portraits",
+        "gilded",
+        "rococo",
+        "chandelier",
+        "royal family",
+        "gallery",
+        "decorative arts"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/7682elv8_Screenshot%202026-07-13%20205700.png",
+      "metadata": {
+        "location": "Portrait Gallery Room",
+        "collection": "Holkar family portraits",
+        "decorative_style": "Gilded rococo",
+        "period": "19th-20th Century"
+      },
+      "related_records": [
+        "LB-013"
+      ],
+      "created_at": "2026-01-20T13:00:00Z"
+    },
+    {
+      "id": "obj-024",
+      "archive_id": "LB-015",
+      "title": "Inner Courtyard with Tiger Display",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Objects",
+      "description": "The palace's two-story neoclassical inner courtyard features a continuous arcade of semicircular arches supported by columns. In the foreground, a taxidermied Bengal tiger in a glass display case represents the royal hunting tradition and the Holkar connection to wildlife. The courtyard's museum configuration includes display panels and lighting, showing the palace's transformation into a public heritage museum. The architecture demonstrates Italian Renaissance-inspired courtyard design adapted to Indian climate.",
+      "keywords": [
+        "courtyard",
+        "tiger",
+        "arcade",
+        "museum",
+        "architecture",
+        "neoclassical",
+        "display"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/ix95hssj_Screenshot%202026-07-13%20205728.png",
+      "metadata": {
+        "location": "Inner Courtyard",
+        "architecture": "Neoclassical arcade",
+        "museum_display": "Bengal tiger specimen",
+        "style": "Italian Renaissance courtyard"
+      },
+      "related_records": [
+        "LB-012"
+      ],
+      "created_at": "2026-01-20T14:00:00Z"
+    },
+    {
+      "id": "obj-025",
+      "archive_id": "LB-016",
+      "title": "Palace Facade - Main Building",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Architecture",
+      "description": "The imposing white neoclassical facade of Lal Bagh Palace stands symmetrically before a cobblestone courtyard. The three-story structure displays European architectural elements including pilasters, cornices, and a central balcony with ornamental ironwork. The dark wooden entrance portico with its black wrought-iron canopy creates a dramatic focal point. Built between 1886-1921 by Maharaja Tukoji Rao Holkar II, this facade represents the Holkar dynasty's embrace of European architectural modernism while establishing Indore as a progressive princely state.",
+      "keywords": [
+        "facade",
+        "palace",
+        "neoclassical",
+        "architecture",
+        "white building",
+        "entrance",
+        "holkar"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kseniwc5_Screenshot%202026-07-14%20133006.png",
+      "metadata": {
+        "location": "Main Palace Building",
+        "built": "1886-1921",
+        "style": "European Neoclassical",
+        "ruler": "Maharaja Tukoji Rao Holkar II",
+        "color": "White painted plaster"
+      },
+      "related_records": [
+        "LB-017"
+      ],
+      "created_at": "2026-01-21T10:00:00Z"
+    },
+    {
+      "id": "obj-026",
+      "archive_id": "LB-017",
+      "title": "Nehru Kendra Name Plaque",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interpretation",
+      "description": "Bronze nameplate reading 'नेहरू केंद्र' (Nehru Kendra) positioned in the palace courtyard, indicating the building's current function as a cultural center. Above the entrance door, the Holkar royal crest remains carved in stone, while circular medallions with baroque relief decorations adorn the white plastered walls. The plaque documents the palace's post-independence transformation from royal residence to public cultural institution, preserving heritage while serving contemporary civic purposes.",
+      "keywords": [
+        "plaque",
+        "nameplate",
+        "nehru kendra",
+        "cultural center",
+        "signage",
+        "holkar crest"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/8gbz7gq1_Screenshot%202026-07-14%20133021.png",
+      "metadata": {
+        "location": "Main Entrance Courtyard",
+        "current_function": "Nehru Kendra Cultural Center",
+        "period": "Post-independence adaptation"
+      },
+      "related_records": [
+        "LB-016"
+      ],
+      "created_at": "2026-01-21T11:00:00Z"
+    },
+    {
+      "id": "obj-027",
+      "archive_id": "LB-018",
+      "title": "Islamic Hall with Ornate Pillars",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "A spectacular hall showcasing Indo-Islamic architectural vocabulary with intricately carved stone pillars featuring geometric and floral patterns. Each column displays different designs - some with Celtic knotwork patterns, others with traditional Islamic arabesques. The cusped arches frame tall windows with blue stained glass in geometric patterns. The ornate plasterwork ceiling displays star and flower motifs. The polished checkered marble floor reflects the filtered colored light, creating an ethereal atmosphere that demonstrates the Holkar court's appreciation of diverse architectural traditions.",
+      "keywords": [
+        "islamic",
+        "hall",
+        "carved pillars",
+        "arabesques",
+        "stained glass",
+        "marble floor",
+        "cusped arches"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/e5pmy5gq_Screenshot%202026-07-14%20134138.png",
+      "metadata": {
+        "location": "Islamic Hall",
+        "style": "Indo-Islamic with Mughal influence",
+        "features": "Carved stone pillars, stained glass windows, ornate ceiling",
+        "floor": "Checkered marble"
+      },
+      "related_records": [
+        "LB-019"
+      ],
+      "created_at": "2026-01-21T12:00:00Z"
+    },
+    {
+      "id": "obj-028",
+      "archive_id": "LB-019",
+      "title": "Islamic Hall - Window Gallery View",
+      "creator": "Taarina Chandiramani",
+      "date": "2026-04",
+      "collection": "Lal Bagh",
+      "category": "Interiors",
+      "description": "Alternate perspective of the Islamic-inspired hall revealing the full rhythm of carved pillars leading to the windowed gallery. Five tall cusped archways frame blue and white geometric stained glass windows that cast colored light across the reflective marble floor. The ceiling's honeycomb pattern and floral medallions demonstrate sophisticated plasterwork techniques. Wall-mounted lamps provide soft illumination. This hall exemplifies the eclectic architectural synthesis characteristic of late 19th-century Indian palace design, blending Mughal heritage with European structural innovations.",
+      "keywords": [
+        "islamic architecture",
+        "windows",
+        "stained glass",
+        "pillars",
+        "gallery",
+        "marble",
+        "cusped arches"
+      ],
+      "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/h1sx8ms2_Screenshot%202026-07-14%20134210.png",
+      "metadata": {
+        "location": "Islamic Hall",
+        "architectural_elements": "Five cusped arches, stained glass gallery",
+        "ceiling": "Honeycomb plasterwork with floral medallions",
+        "lighting": "Natural colored light through stained glass"
+      },
+      "related_records": [
+        "LB-018"
+      ],
+      "created_at": "2026-01-21T13:00:00Z"
+    }
+  ],
+  "voices": [
+    {
+      "id": "voice-001",
+      "archive_id": "OH-001",
+      "name": "Harishchand Mishra",
+      "role": "Palace Caretaker & Heritage Guide",
+      "biography": "Harishchand Mishra has served as a dedicated caretaker and guide at Lal Bagh Palace, sharing intricate details about the palace's construction, architecture, and daily life of the Holkar royalty. His detailed narrations preserve the living memory of the palace's European-inspired design, Italian marble installations, underground tunnels, and the royal family's lifestyle spanning over 170 years of history.",
+      "portrait_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/owt7koup_Screenshot%202026-07-14%20141025.png",
+      "audio_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/l83a0mus_Sheetal%20Nagar%206%20%281%29%20%28online-video-cutter.com%29%20%282%29.m4a",
+      "transcript": "This palace, Lalbagh Palace, was built in 1846 by the king of Indore, Ujjwala Mukherjee. The palace is 4 acres in size with 72 acres of land. Lalbagh Palace is known for its large garden. It had 16 types of rose flowers, of which 444 were desi rose flowers. The palace was surrounded by red flowers. This palace is called Lalbagh Palace—Lal means red, Bagh means garden, and palace means palace.\n\nThe king used to sit in the second hall of the palace. He used to sit there and meditate. On festivals, people used to come to meet him. He used to open the gate of the palace. People used to sit around him and give him gold and silver coins.\n\nThe marble used to be brought from Italy. When it was brought from Italy, there was no equipment to bring it—aircrafts were not allowed. The marble was brought from Italy to Bombay. From Bombay, there was no equipment for Indore. It was brought by elephants and horses. It was a single piece of marble. You will not find such marbles anywhere in the country.\n\nOn the second floor, there is gold water on the terrace. On the wall, there is gold all around. The architecture of the palace is very beautiful. It is built in a European style. When the king built this palace 170 years ago, the king of Indore and the British government supported him. The entire palace has been built in British style. It took 15 to 20 years to build the palace. The palace was built by three kings—it has been built three times.\n\nThe palace is built 4 acres away. The kitchen was not built inside the palace because the beauty of the palace would be ruined and the palace would not look beautiful.\n\nThere is a Saraswati river next to Lal Bagh. The king's kitchen was built on the other side of the river. The food used to come from there. Under the river, there was a tunnel-like house built inside the palace. When the food was cooked, there were big heaters in the lower house. The food used to get hot in those heaters. After the food got hot, there was a lift in front of the palace. Because there was no electricity in the palace 177 years ago, there was a lift that was pulled by hand. The food used to come up from below. The king's family and guests used to come here and eat.\n\nOn the other side of the palace, the king used to have performances of singers and dancers. There used to be a big swing in the lower house. There used to be dance and people used to watch it from above.\n\nThere are two lions displayed. When this palace was built, there was a jungle all around. The king himself killed two lions, removed the inner material, applied spices, and kept the skin preserved. It is original.\n\nThere are rooms where at least 14 kings used to sit and talk. There is a banquet and dining hall where the king used to host foreign guests who came to sit and eat.\n\nThere is a sitting room on one side and a crown hall on the other. The king's throne is kept in the crown hall. This is where the kings used to sit and meet. They used to discuss matters—if there was a battle, they used to talk to each other.\n\nThere is a ladies bathroom made in a very beautiful way. There are separate areas to eat food in Indian style—one made for ladies and one for men. One is made in a Pakistani culture and the other is made in a local culture.\n\nThe king used to set up a court here. If the public had any problem, they used to come to the king. The king used to sit here and solve their problems. Nowadays, the government is doing it. At that time, the kings used to do all the work.\n\nThere was a queen's bedroom upstairs with a private tub in the bathroom. There were four chairs in front of the bedroom—three queens and one king. The king had three queens. One was a foreigner and the other was an Indian. The guests used to sit and eat in the bedroom.\n\nWho was the engineer who made it? He was a British engineer named Henry Dutton. There is a statue of him. There is a map in his hand. On the basis of the map, the whole of Lalbagh has been made. The British culture has been implemented from beginning to end. The British have never lived there—they are kings, but it was made with their help.\n\nIt is made in a very beautiful way. People from far away come. People from foreign countries come. A lot of people come and go with a lot of praise. It is made so beautifully that it has never been made anywhere in our country.",
+      "highlighted_quote": "The marble was brought from Italy by elephants and horses—a single piece you will not find anywhere in the country.",
+      "research_interests": [
+        "Palace Architecture",
+        "Royal Lifestyle",
+        "Construction History"
+      ],
+      "related_objects": [
+        "LB-005",
+        "LB-007",
+        "LB-012",
+        "LB-016"
+      ],
+      "created_at": "2026-01-17T10:00:00Z"
+    },
+    {
+      "id": "voice-002",
+      "archive_id": "OH-002",
+      "name": "Ankit Verma",
+      "role": "Archival Researcher",
+      "biography": "Ankit Verma is an independent researcher specializing in Maratha architecture and heritage conservation based in Delhi, originally from Indore. He focuses on cultural history and has been instrumental in documenting Rajwada's architectural evolution and its role in shaping Indore's urban identity.",
+      "portrait_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/g9szlhbu_unnamed%20%281%29.jpg",
+      "audio_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/gou4uab7_Call%20with%20ankit%20verma%20calling%20%28mp3cut.net%29.m4a",
+      "transcript": "Rajwada and Lalbagh are important to Indore in different capacities. Rajwada is a place which becomes a converging point for most people—a space where people gather together. Given the historical background of the palace, which was built by Maharaj Holkar in 1747, it becomes really important. It housed most of the Holkars and is a seminal building.\n\nLalbagh is different—it has more modern, European and Italian-style architecture. Lalbagh has become more of a touristy space. Heritage-based nuances are usually overlooked. But Rajwada has a more visible cultural connotation attached to it, making it easy for people to connect.\n\nOver time, the mode of communicating heritage has evolved. We used to have heritage walks, and even now in Indore we have many Sunday heritage walks. What I believe is that in the times we are in, it's important to make short-form content which is digestible and easily consumed by the larger population. Academic research has not been done a lot in terms of Indore's history.\n\nIt's important to tell these stories, but also show how the general public and culture around Indore developed because of these heritage sites. The marketplace near Rajwada has flourished because it was eminent inside. When we restrict heritage to just inside the walls, it becomes a problem because you don't get to see how it impacts the general public.\n\nIt's important for people to be able to take more open access tours and have guided tourism. There's a need for conservation—many heritage sites in Indore are in dire straits. There are stepwells, older jails, and important sites completely in ruins. If they're not conserved now, they'll wither away with time.\n\nThese palaces are living heritage because the way they were only confined for royalties is no longer the case. There are light and sound shows in Rajwada, bookstores housed in these palaces. At some point in Lalbagh, there was a planetarium-based show about the solar system. There was a pond at Lalbagh which is not there anymore.\n\nThe lack of interaction is a problem. I would want more interactive elements introduced in tourism so people appreciate the value beyond aesthetic.\n\nThe history should not be confined to the walls of the palaces. The immediate impact these spaces had on the places and people around, and the cultures that developed, have to be looked into. Rajwada marketplace is a very important part. Panchamesh Gir has been a huge tradition for a very long time and only happens at Rajwada Palace. Flower shows used to happen at Lalbagh. It's called Lalbagh because there were 60-plus varieties of roses in the garden at some point—but slowly this reason has gone out of the lexicon.\n\nIf I was to describe Rajwada and Lalbagh in one word: these are the hearts of the city. Rajwada definitely is because it's a converging point. Everything comes and melts there. It's like a potpourri of vestiges where Indore, though largely dominated by Maratha culture, had all kinds of people—Sindhis, Parsis, Gujaratis, refugees, all communities—who would come there and be Indori. To be a citizen of Indore right there in front of Rajwada is what made it what it was.\n\nRajwada has also seen tumultuous times and reflects the volatile nature of Indore's communal history. It's a witness to the transformation, the communal transformation of the city.\n\nI wish there was a way to conserve these places. There's so much more to explore. There needs to be more historical research beyond royalty-attached histories. Beyond aesthetic value, there's political, diplomatic, and religious connotation that becomes important when looking at the city's history because Indore draws from different avenues. There's a need for further inquiry into historical research in Indore heritage.",
+      "highlighted_quote": "Rajwada and Lalbagh are the hearts of the city—everything comes and melts there.",
+      "research_interests": [
+        "Architecture",
+        "Conservation",
+        "Urban History",
+        "Cultural Heritage"
+      ],
+      "related_objects": [
+        "RJ-001",
+        "RJ-005",
+        "RJ-009",
+        "LB-001"
+      ],
+      "created_at": "2026-01-17T11:00:00Z"
+    },
+    {
+      "id": "voice-003",
+      "archive_id": "OH-003",
+      "name": "Pushyamitra Bhargava",
+      "role": "Mayor of Indore",
+      "biography": "Pushyamitra Bhargava served as Mayor of Indore from 2019 to 2024, during which time he championed several heritage conservation initiatives including the revival of Rajwada and Lalbagh Palace. His administration prioritized the preservation of the city's historic monuments while promoting sustainable urban development and public engagement through heritage walks and light-and-sound shows.",
+      "portrait_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/oweoag19_Screenshot%202026-07-14%20135409.png",
+      "audio_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/t41yabvo_Sheetal%20Nagar%206%20%281%29%20%28online-video-cutter.com%29.m4a",
+      "transcript": "I have been to Rajwada and Lalbagh many times—when I was a student, when I became Deputy Advocate General, and after becoming Mayor, I go there again and again.\n\nRajwada is our heritage, our history, our pride. And Lalbagh is an example of our ancient luxury. They both play a very important role in shaping Indore's identity because they have given an identity based upon the heritage which has been created. Rajwada contains a religious character also. Lalbagh contains heritage beauty from all over the world because it has taken note from different parts of the world.\n\nDuring my tenure, we finished the work of reviving Rajwada. We repaired the façade and the part that was burnt. We also started a light and sound show there. Because of this, people became more attracted to Rajwada.\n\nWhen I became Mayor, I decided we would make Lalbagh a good tourist destination. We have revived the entire internal heritage of that place. The work is still going on. We have also worked on a big garden outside so the entrance and façade are beautiful. While protecting the heritage and archaeological structure, we introduced security and good guides. In Indore, we also started a heritage walk from Chhatriyon to Rajwada and Lalbagh.\n\nLocal communities can get involved through heritage walks. Schools and colleges should take students there and tell them their importance—tell them what their connection with us is. When children go home and talk to their parents, it's possible they will take them on weekends.\n\nThat's why we started the light and sound show—the growth of the Holkar Vansh and Indore is told there. I think, apart from the boards, that is one way which we have already introduced.\n\nWith the passage of time, we can see that people are more concerned about their heritage. Like the revival of Rajwada, which was broken and burnt, we have revived it. We are completing the new Lalbagh Palace. People are becoming more attracted to heritage. Earlier, there was not so much interest. I myself went to Rajwada for the first time when I was in Class 12. So children should be taken there very soon.",
+      "highlighted_quote": "Rajwada is our heritage, our history, our pride.",
+      "research_interests": [
+        "Urban Planning",
+        "Heritage Policy",
+        "Public Engagement",
+        "Tourism Development"
+      ],
+      "related_objects": [
+        "RJ-005",
+        "RJ-009",
+        "LB-005",
+        "LB-016"
+      ],
+      "created_at": "2026-01-17T12:00:00Z"
+    },
+    {
+      "id": "voice-004",
+      "archive_id": "OH-004",
+      "name": "Harishchand Mishra",
+      "role": "Heritage Narrator & Oral Historian",
+      "biography": "Harishchand Mishra is a dedicated oral historian and heritage narrator who has extensively documented the history of the Holkar dynasty and its impact on Indore. His detailed narrations provide invaluable insights into the lives of Ahilyabai Holkar, Malhar Rao Holkar, and the evolution of Rajwada Palace from 1747 to present day.",
+      "portrait_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/owt7koup_Screenshot%202026-07-14%20141025.png",
+      "audio_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/5th6emyg_Sheetal%20Nagar%204%20%281%29_noisles.m4a",
+      "transcript": "Ahilyabai Holkar was born in Maharashtra, in Pune's Badbir district, in a village called Chaurigaon on 21st May 1725. She was married to Khanderao Holkar. Malhar Rao Holkar is her father-in-law. She had only one son, Male Rao Holkar. All these people lived in Rajwada. Rajwada was built in 1747 by Malhar Rao Holkar.\n\nOnce there was a war with the Britishers in Pune, Rajasthan. On 17th May 1754, Ahilyabai Holkar's husband Khanderao Holkar was sent to fight. While fighting, Khanderao Holkar was killed. Ahilyabai Holkar thought that when my husband is dead, what is the use of me being alive? So she decided to become a saint.\n\nMalhar Rao Holkar, her father-in-law, told her not to become a saint. You have to take care of Rajwada. You have to take care of this village. At that time, Ahilyabai Holkar did not become a saint.\n\nMalhar Rao Holkar was sitting on the throne. On 20th May 1766, Malhar Rao Holkar died of illness. He was 73 years old. He was in Tamoy, Bhind. The Rajwada of Bhind time used to run from there. Malhar Rao Holkar ruled from 1732 to 1766.\n\nWhen he died in 1766, Ahilyabai Holkar's son, Male Rao Holkar, was made to sit on the throne in 1766. He sat for a year, then he died on 27th March 1767. When the son died, Ahilyabai Holkar took over the throne in 1767.\n\nShe lived less in Indore and more in Maheshwar because Indore's Rajdhani was in Maheshwar. Before going to Maheshwar, she formed an army here. The commander was Pratham Tukoji Rao Holkar. She told him: 'You take care of this place. Rest, I will take care of everything from Maheshwar.'\n\nIn Maheshwar, she built a fort and a temple. She was a worshipper of Adharmi Prashivji. She started worshipping there and living in Maheshwar.\n\nOn 13th August 1795, Ahilyabai Holkar died in Maheshwar. She ruled for 28 years. When she died, there was no one left to take over the throne. The son died, the wife died, the father-in-law died, and she herself died.\n\nPratham Tukoji Rao Holkar, who was the commander, then took over the throne. He had four sons: Kasira, Yashantra, Malhara, and Vithuriji. When Tukoji Rao Holkar died after two years, his sons were given the throne. Similarly, the boys were given the throne. Ahilyabai Holkar's era was over.\n\nThe commander was from Ahilyabai Holkar's family, not from outside. Pratham Tukoji Rao Holkar used to live in Rajwada. The palace of their family was built after Ahilyabai Holkar's death. In 1795, Ahilyabai Holkar died. And it was built in 1844. Ahilyabai Holkar's family built this palace.\n\nMalhar Rao Holkar was born in Maharashtra on 16th October 1693 in Holgaon. He fought many kings and defeated them. He came to Ahilyabai Holkar's village, Chaurigaon. There was a river called Srina. Malhar Rao Holkar used to sit on the bank of the Srina River with his army.\n\nAhilyabai Holkar used to roam around there. Malhar Rao Holkar asked her, 'Where do you live?' She said, 'I live in this village, Chaurigaon. My father's name is Patil Manukai Shinde. Mother's name is Susheela Bai.'\n\nMalhar Rao Holkar was impressed by her words. He wanted to meet her father. He asked Ahilyabai Holkar's father, 'Do you want to get your daughter married to Khanderao Holkar?' Her father said, 'Our daughter is still young. She is not ready to get married.' Malhar Rao Holkar said, 'You get her married. We will take care of the rest.'\n\nShe was born on 21st May 1725. She got married at age 8 in 1733. She had a son in 1745, Male Rao Holkar. Her daughter died in 1757. Her husband died in 1754. At that time, Ahilyabai Holkar was 29 years old.\n\nShe has been serving the country for 70 years. She has built temples all over the country—Somnath, Nashik, Hyderabad, Prayagraj, Banaras, Kedarnath, Badrinath, Ayodhya, and many other places. She has built the Ghats of the Ganga at Prayagraj, Banaras, Kedarnath, and Ayodhya.\n\nWhen Ahilyabai Holkar got married and came to Indore, it was a small village called Indore. She opened a college for the poor, a hospital for the poor, a road for the poor, and a bazaar for the poor. She did a lot of work for the poor. Then Indore became such a big city.\n\nShe had five brothers. She was the youngest daughter. She wanted to live like a queen. But she saw poverty. She did a lot of work for the poor. She invested all her money and wealth in serving the poor. She dedicated her whole life to serve the poor in the name of God. She had no other work.\n\nToday, she is known as Devi in Indore—Devi Ahilyabai Holkar. This is her story.",
+      "highlighted_quote": "Today, she is known as Devi in Indore—Devi Ahilyabai Holkar.",
+      "research_interests": [
+        "Holkar Dynasty",
+        "Ahilyabai Holkar",
+        "Rajwada History",
+        "Oral Tradition"
+      ],
+      "related_objects": [
+        "RJ-001",
+        "RJ-005",
+        "RJ-009"
+      ],
+      "created_at": "2026-01-21T14:00:00Z"
+    }
+  ],
+  "metadata": {
+    "generated_at": "2026-07-14T09:30:00Z",
+    "total_collections": 3,
+    "total_objects": 28,
+    "total_voices": 4
+  }
+}

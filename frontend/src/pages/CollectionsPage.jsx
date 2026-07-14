@@ -1,28 +1,18 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { loadArchiveData, getCollections } from '@/utils/archiveData';
 import { COLLECTIONS } from '@/constants/testIds';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const CollectionsPage = () => {
   const [collections, setCollections] = useState([]);
-  
-  const fetchCollections = useCallback(async () => {
-    try {
-      const response = await axios.get(`${API}/collections`);
-      setCollections(response.data);
-    } catch (error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Error fetching collections:', error);
-      }
-    }
-  }, [API]);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    fetchCollections();
-  }, [fetchCollections]);
+    loadArchiveData().then(() => {
+      setCollections(getCollections());
+      setIsLoaded(true);
+    });
+  }, []);
   
   const collectionImages = {
     'Rajwada': 'https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/p07kwv9m_Screenshot%202026-07-13%20201051.png',
@@ -32,8 +22,12 @@ const CollectionsPage = () => {
   
   const testIds = [COLLECTIONS.rajwadaCard, COLLECTIONS.lalBaghCard, COLLECTIONS.voicesCard];
   
+  if (!isLoaded) {
+    return null;
+  }
+  
   return (
-    <div className="min-h-screen pt-32 pb-24 page-content">
+    <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-12 mb-24">
           <h1 className="text-5xl md:text-6xl font-serif text-archive-text">

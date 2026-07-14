@@ -1,58 +1,47 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { loadArchiveData, getFeaturedObject } from '@/utils/archiveData';
 import { HOME, COLLECTIONS } from '@/constants/testIds';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const HomePage = () => {
   const [featured, setFeatured] = useState(null);
-  const [collections, setCollections] = useState([]);
-  
-  const fetchData = useCallback(async () => {
-    try {
-      const [featuredRes, collectionsRes] = await Promise.all([
-        axios.get(`${API}/featured`),
-        axios.get(`${API}/collections`)
-      ]);
-      setFeatured(featuredRes.data);
-      setCollections(collectionsRes.data);
-    } catch (error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Error fetching data:', error);
-      }
-    }
-  }, [API]);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    loadArchiveData().then(() => {
+      setFeatured(getFeaturedObject());
+      setIsLoaded(true);
+    });
+  }, []);
   
   const scrollToContent = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    const vh = window.innerHeight;
+    window.scrollTo({ top: vh, behavior: 'smooth' });
   };
+  
+  if (!isLoaded) {
+    return null; // Fast initial render
+  }
   
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section
         data-testid={HOME.heroSection}
-        className="relative h-screen flex items-center justify-center overflow-hidden film-grain"
+        className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <div className="absolute inset-0">
           <img
             src="https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/gqytg1r1_image.png"
             alt="Rajwada Palace View"
-            loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             className="w-full h-full object-cover vintage-photo"
           />
           <div className="hero-overlay absolute inset-0" />
         </div>
         
-        <div className="relative z-10 text-center text-white px-6 space-y-8 max-w-4xl slide-up">
+        <div className="relative z-10 text-center text-white px-6 space-y-8 max-w-4xl fade-in-fast">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-none" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)' }}>
             Living Heritage
           </h1>
@@ -69,7 +58,8 @@ const HomePage = () => {
         <button
           onClick={scrollToContent}
           data-testid={HOME.scrollIndicator}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-smooth animate-bounce"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-fast"
+          aria-label="Scroll to content"
         >
           <ChevronDown size={32} />
         </button>

@@ -1,11 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { loadArchiveData, getArchiveObjects } from '@/utils/archiveData';
 import ArchiveViewer from '@/components/ArchiveViewer';
 import { ARCHIVE } from '@/constants/testIds';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const CollectionDetailPage = () => {
   const { slug } = useParams();
@@ -13,49 +10,34 @@ const CollectionDetailPage = () => {
   const [selectedObject, setSelectedObject] = useState(null);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isLoaded, setIsLoaded] = useState(false);
   
   // Determine collection details
-  let collectionName;
-  let series;
-  
-  if (slug === 'rajwada') {
-    collectionName = 'Rajwada';
-    series = 'Series I';
-  } else if (slug === 'lal-bagh') {
-    collectionName = 'Lal Bagh';
-    series = 'Series II';
-  } else {
-    collectionName = slug;
-    series = '';
-  }
-  
-  const fetchObjects = useCallback(async () => {
-    try {
-      const response = await axios.get(`${API}/archive-objects`, {
-        params: { collection: collectionName }
-      });
-      setObjects(response.data);
-      
-      // Extract unique categories
-      const uniqueCategories = [...new Set(response.data.map(obj => obj.category).filter(Boolean))];
-      setCategories(uniqueCategories);
-    } catch (error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Error fetching objects:', error);
-      }
-    }
-  }, [API, collectionName]);
+  const collectionName = slug === 'rajwada' ? 'Rajwada' : 'Lal Bagh';
+  const series = slug === 'rajwada' ? 'Series I' : 'Series II';
   
   useEffect(() => {
-    fetchObjects();
-  }, [fetchObjects]);
+    loadArchiveData().then(() => {
+      const collectionObjects = getArchiveObjects(collectionName);
+      setObjects(collectionObjects);
+      
+      // Extract unique categories
+      const uniqueCategories = [...new Set(collectionObjects.map(obj => obj.category).filter(Boolean))];
+      setCategories(uniqueCategories);
+      setIsLoaded(true);
+    });
+  }, [collectionName]);
   
   const filteredObjects = selectedCategory === 'all'
     ? objects
     : objects.filter(obj => obj.category === selectedCategory);
   
+  if (!isLoaded) {
+    return null;
+  }
+  
   return (
-    <div className="min-h-screen pt-32 pb-24 page-content">
+    <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-8 mb-16">
           <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">

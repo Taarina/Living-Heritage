@@ -1,43 +1,35 @@
-/* Smooth transitions */
-.transition-smooth {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+/* Fast, lightweight transitions only */
+.transition-fast {
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-.transition-slow {
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+.fade-in-fast {
+    animation: fadeInFast 0.3s ease-out;
 }
 
-/* Page turn animation */
-@keyframes pageTurn {
-    0% {
+@keyframes fadeInFast {
+    from {
         opacity: 0;
-        transform: perspective(2000px) rotateY(-15deg);
-        transform-origin: left center;
     }
-    100% {
+    to {
         opacity: 1;
-        transform: perspective(2000px) rotateY(0deg);
     }
 }
 
-.page-turn-enter {
-    animation: pageTurn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Image hover effects with vintage feel */
+/* Image hover effects with vintage feel - optimized */
 .archive-image-container {
     overflow: hidden;
     position: relative;
 }
 
 .archive-image {
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    transition: transform 0.3s ease;
     filter: sepia(0.08) contrast(1.05);
+    will-change: transform;
 }
 
 .archive-image-container:hover .archive-image {
     transform: scale(1.03);
-    filter: sepia(0.15) contrast(1.1);
 }
 
 /* Handwritten date stamp */
@@ -58,37 +50,21 @@
     pointer-events: none;
 }
 
-/* Archival drawer effect with vintage styling */
+/* Archival drawer effect - optimized */
 .archival-drawer {
     border: 1px solid rgba(112, 66, 20, 0.15);
-    transition: all 0.5s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     position: relative;
     background: #F7F5F0;
-}
-
-.archival-drawer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(112, 66, 20, 0.02) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
 }
 
 .archival-drawer:hover {
     border-color: rgba(112, 66, 20, 0.3);
     box-shadow: 0 4px 16px rgba(112, 66, 20, 0.1);
+    transform: translateY(-2px);
 }
 
-.archival-drawer:hover::before {
-    opacity: 1;
-}
-
-/* Hero overlay with nostalgic feel */
+/* Hero overlay */
 .hero-overlay {
     background: linear-gradient(
         to bottom,
@@ -110,76 +86,13 @@
     transition: width 0.1s linear;
 }
 
-/* Navigation blur effect */
-.nav-blur {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(112, 66, 20, 0.1);
-}
-
-/* Modal/Viewer animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.slide-up {
-    animation: slideUp 0.6s ease-out;
-}
-
-/* Archive grid layout with film strip effect */
+/* Archive grid layout - simplified */
 .archive-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 3rem;
     padding: 2rem;
-    background: linear-gradient(to bottom, transparent 0%, rgba(112, 66, 20, 0.02) 100%);
     position: relative;
-}
-
-/* Film strip perforations */
-.archive-grid::before,
-.archive-grid::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 16px;
-    background: repeating-linear-gradient(
-        to right,
-        rgba(112, 66, 20, 0.15) 0px,
-        rgba(112, 66, 20, 0.15) 12px,
-        transparent 12px,
-        transparent 20px
-    );
-    pointer-events: none;
-}
-
-.archive-grid::before {
-    top: 0;
-}
-
-.archive-grid::after {
-    bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -215,21 +128,16 @@ button:not(.vintage-shadow),
     box-shadow: 0 4px 12px rgba(112, 66, 20, 0.15) !important;
 }
 
-/* Stamp effect for archive IDs */
+/* Stamp effect */
 .archive-stamp {
     padding: 4px 12px;
     border: 1px dashed rgba(112, 66, 20, 0.3);
     background: rgba(112, 66, 20, 0.05);
     display: inline-block;
     transform: rotate(-2deg);
-    transition: transform 0.3s ease;
 }
 
-.archive-stamp:hover {
-    transform: rotate(0deg);
-}
-
-/* Polaroid-style photo frame */
+/* Polaroid-style photo frame - optimized */
 .polaroid {
     background: white;
     padding: 12px;
@@ -238,32 +146,17 @@ button:not(.vintage-shadow),
         0 4px 8px rgba(0, 0, 0, 0.1),
         0 1px 2px rgba(0, 0, 0, 0.06);
     position: relative;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .polaroid:hover {
-    transform: rotate(0deg) translateY(-4px);
+    transform: translateY(-4px);
     box-shadow: 
         0 8px 16px rgba(0, 0, 0, 0.12),
         0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-.polaroid::after {
-    content: attr(data-caption);
-    position: absolute;
-    bottom: 8px;
-    left: 12px;
-    right: 12px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: #666;
-    text-align: center;
-    line-height: 1.3;
-}
-
-/* Polaroid caption styling */
+/* Polaroid caption */
 .polaroid-caption {
     position: absolute;
     bottom: 8px;
@@ -278,89 +171,7 @@ button:not(.vintage-shadow),
     pointer-events: none;
 }
 
-/* Film strip border for collections */
-.film-strip-border {
-    position: relative;
-    padding: 24px 16px;
-    background: #F7F5F0;
-}
-
-.film-strip-border::before,
-.film-strip-border::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20px;
-    background: 
-        linear-gradient(to right, 
-            rgba(112, 66, 20, 0.1) 0%, 
-            rgba(112, 66, 20, 0.1) 40%, 
-            transparent 40%, 
-            transparent 100%),
-        repeating-linear-gradient(
-            to right,
-            transparent 0px,
-            transparent 6px,
-            rgba(112, 66, 20, 0.15) 6px,
-            rgba(112, 66, 20, 0.15) 8px,
-            transparent 8px,
-            transparent 16px
-        );
-}
-
-.film-strip-border::before {
-    top: 0;
-}
-
-.film-strip-border::after {
-    bottom: 0;
-}
-
-/* Film perforation dots */
-.film-perforations {
-    position: relative;
-}
-
-.film-perforations::before,
-.film-perforations::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 100%;
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 8px,
-        rgba(112, 66, 20, 0.1) 8px,
-        rgba(112, 66, 20, 0.1) 12px,
-        transparent 12px,
-        transparent 20px
-    );
-}
-
-.film-perforations::before {
-    left: -12px;
-}
-
-.film-perforations::after {
-    right: -12px;
-}
-
-/* Vintage photo annotation */
-.photo-annotation {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 14px;
-    color: rgba(112, 66, 20, 0.7);
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(112, 66, 20, 0.1);
-    margin-bottom: 12px;
-}
-
-/* Collection card rotation for scattered photo effect */
+/* Collection card subtle rotation */
 .polaroid:nth-child(3n+1) {
     transform: rotate(-1deg);
 }
@@ -371,9 +182,4 @@ button:not(.vintage-shadow),
 
 .polaroid:nth-child(3n+3) {
     transform: rotate(-0.5deg);
-}
-
-/* Page content wrapper for turn effect */
-.page-content {
-    animation: pageTurn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,34 +1,25 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { loadArchiveData, getVoices } from '@/utils/archiveData';
 import AudioPlayer from '@/components/AudioPlayer';
 import { VOICES } from '@/constants/testIds';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
 const VoicesPage = () => {
   const [voices, setVoices] = useState([]);
-  const [selectedVoice, setSelectedVoice] = useState(null);
-  
-  const fetchVoices = useCallback(async () => {
-    try {
-      const response = await axios.get(`${API}/voices`);
-      setVoices(response.data);
-    } catch (error) {
-      // Error handling - could integrate with error tracking service
-      if (process.env.NODE_ENV !== 'production') {
-        console.error('Error fetching voices:', error);
-      }
-    }
-  }, [API]);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    fetchVoices();
-  }, [fetchVoices]);
+    loadArchiveData().then(() => {
+      setVoices(getVoices());
+      setIsLoaded(true);
+    });
+  }, []);
+  
+  if (!isLoaded) {
+    return null;
+  }
   
   return (
-    <div className="min-h-screen pt-32 pb-24 page-content">
+    <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-12 mb-24">
           <div className="space-y-6">
