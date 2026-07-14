@@ -130,7 +130,7 @@ const HomePage = () => {
               <div className="corner-bl"></div>
               <div className="corner-br"></div>
               <img
-                src="https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uzk1qfq2_Screenshot%202026-07-13%20204708.png"
+                src="https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kseniwc5_Screenshot%202026-07-14%20133006.png"
                 alt="Lal Bagh Collection"
                 loading="lazy"
                 className="archive-image w-full h-full object-cover"

@@ -520,6 +520,86 @@ async def seed_database() -> None:
             },
             "related_records": ["LB-012"],
             "created_at": "2026-01-20T14:00:00Z"
+        },
+        {
+            "id": "obj-025",
+            "archive_id": "LB-016",
+            "title": "Palace Facade - Main Building",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Architecture",
+            "description": "The imposing white neoclassical facade of Lal Bagh Palace stands symmetrically before a cobblestone courtyard. The three-story structure displays European architectural elements including pilasters, cornices, and a central balcony with ornamental ironwork. The dark wooden entrance portico with its black wrought-iron canopy creates a dramatic focal point. Built between 1886-1921 by Maharaja Tukoji Rao Holkar II, this facade represents the Holkar dynasty's embrace of European architectural modernism while establishing Indore as a progressive princely state.",
+            "keywords": ["facade", "palace", "neoclassical", "architecture", "white building", "entrance", "holkar"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kseniwc5_Screenshot%202026-07-14%20133006.png",
+            "metadata": {
+                "location": "Main Palace Building",
+                "built": "1886-1921",
+                "style": "European Neoclassical",
+                "ruler": "Maharaja Tukoji Rao Holkar II",
+                "color": "White painted plaster"
+            },
+            "related_records": ["LB-017"],
+            "created_at": "2026-01-21T10:00:00Z"
+        },
+        {
+            "id": "obj-026",
+            "archive_id": "LB-017",
+            "title": "Nehru Kendra Name Plaque",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interpretation",
+            "description": "Bronze nameplate reading 'नेहरू केंद्र' (Nehru Kendra) positioned in the palace courtyard, indicating the building's current function as a cultural center. Above the entrance door, the Holkar royal crest remains carved in stone, while circular medallions with baroque relief decorations adorn the white plastered walls. The plaque documents the palace's post-independence transformation from royal residence to public cultural institution, preserving heritage while serving contemporary civic purposes.",
+            "keywords": ["plaque", "nameplate", "nehru kendra", "cultural center", "signage", "holkar crest"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/8gbz7gq1_Screenshot%202026-07-14%20133021.png",
+            "metadata": {
+                "location": "Main Entrance Courtyard",
+                "current_function": "Nehru Kendra Cultural Center",
+                "period": "Post-independence adaptation"
+            },
+            "related_records": ["LB-016"],
+            "created_at": "2026-01-21T11:00:00Z"
+        },
+        {
+            "id": "obj-027",
+            "archive_id": "LB-018",
+            "title": "Islamic Hall with Ornate Pillars",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "A spectacular hall showcasing Indo-Islamic architectural vocabulary with intricately carved stone pillars featuring geometric and floral patterns. Each column displays different designs - some with Celtic knotwork patterns, others with traditional Islamic arabesques. The cusped arches frame tall windows with blue stained glass in geometric patterns. The ornate plasterwork ceiling displays star and flower motifs. The polished checkered marble floor reflects the filtered colored light, creating an ethereal atmosphere that demonstrates the Holkar court's appreciation of diverse architectural traditions.",
+            "keywords": ["islamic", "hall", "carved pillars", "arabesques", "stained glass", "marble floor", "cusped arches"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/e5pmy5gq_Screenshot%202026-07-14%20134138.png",
+            "metadata": {
+                "location": "Islamic Hall",
+                "style": "Indo-Islamic with Mughal influence",
+                "features": "Carved stone pillars, stained glass windows, ornate ceiling",
+                "floor": "Checkered marble"
+            },
+            "related_records": ["LB-019"],
+            "created_at": "2026-01-21T12:00:00Z"
+        },
+        {
+            "id": "obj-028",
+            "archive_id": "LB-019",
+            "title": "Islamic Hall - Window Gallery View",
+            "creator": "Taarina Chandiramani",
+            "date": "2026-04",
+            "collection": "Lal Bagh",
+            "category": "Interiors",
+            "description": "Alternate perspective of the Islamic-inspired hall revealing the full rhythm of carved pillars leading to the windowed gallery. Five tall cusped archways frame blue and white geometric stained glass windows that cast colored light across the reflective marble floor. The ceiling's honeycomb pattern and floral medallions demonstrate sophisticated plasterwork techniques. Wall-mounted lamps provide soft illumination. This hall exemplifies the eclectic architectural synthesis characteristic of late 19th-century Indian palace design, blending Mughal heritage with European structural innovations.",
+            "keywords": ["islamic architecture", "windows", "stained glass", "pillars", "gallery", "marble", "cusped arches"],
+            "image_url": "https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/h1sx8ms2_Screenshot%202026-07-14%20134210.png",
+            "metadata": {
+                "location": "Islamic Hall",
+                "architectural_elements": "Five cusped arches, stained glass gallery",
+                "ceiling": "Honeycomb plasterwork with floral medallions",
+                "lighting": "Natural colored light through stained glass"
+            },
+            "related_records": ["LB-018"],
+            "created_at": "2026-01-21T13:00:00Z"
         }
     ]
     

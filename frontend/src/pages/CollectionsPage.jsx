@@ -26,7 +26,7 @@ const CollectionsPage = () => {
   
   const collectionImages = {
     'Rajwada': 'https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/p07kwv9m_Screenshot%202026-07-13%20201051.png',
-    'Lal Bagh': 'https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/uzk1qfq2_Screenshot%202026-07-13%20204708.png',
+    'Lal Bagh': 'https://customer-assets.emergentagent.com/job_archival-spaces/artifacts/kseniwc5_Screenshot%202026-07-14%20133006.png',
     'Voices': 'https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   };
   
