@@ -40,14 +40,14 @@ const ExplorePage = () => {
   };
   
   return (
-    <div className="min-h-screen pt-32 pb-24">
+    <div className="min-h-screen pt-32 pb-24 page-content">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-12 mb-24">
           <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
             Explore
           </h1>
           
-          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl">
+          <p className="text-base md:text-lg leading-relaxed text-archive-text/90 max-w-3xl photo-annotation">
             Browse the archive by themes, materials, architectural elements, and more. Each category reveals different perspectives on the palace spaces.
           </p>
         </div>
@@ -58,10 +58,10 @@ const ExplorePage = () => {
             <button
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className={`p-8 text-center border transition-smooth ${
+              className={`p-8 text-center border transition-smooth vintage-shadow ${
                 selectedCategory === category
                   ? 'border-archive-gold bg-archive-gold text-white'
-                  : 'border-archive-secondary hover:border-archive-text/30 text-archive-text'
+                  : 'border-archive-secondary hover:border-archive-text/30 text-archive-text bg-white'
               }`}
             >
               <p className="text-lg font-serif">{category}</p>
@@ -71,7 +71,7 @@ const ExplorePage = () => {
         
         {isLoading && (
           <div className="text-center py-24">
-            <p className="text-base text-archive-text/60">Loading...</p>
+            <p className="text-base text-archive-text/60 handwritten">Searching archives...</p>
           </div>
         )}
         
@@ -83,41 +83,44 @@ const ExplorePage = () => {
             </h2>
             
             {objects.length > 0 ? (
-              <div className="archive-grid">
-                {objects.map((object) => (
-                  <button
-                    key={object.id}
-                    onClick={() => setSelectedObject(object)}
-                    data-testid={ARCHIVE.objectCard}
-                    className="archival-drawer bg-transparent group text-left"
-                  >
-                    <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary">
-                      <img
-                        src={object.image_url}
-                        alt={object.title}
-                        className="archive-image w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-6 space-y-3">
-                      <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
-                        {object.archive_id}
-                      </p>
-                      <h3 className="text-xl font-serif text-archive-text">
+              <div className="film-strip-border">
+                <div className="archive-grid">
+                  {objects.map((object) => (
+                    <button
+                      key={object.id}
+                      onClick={() => setSelectedObject(object)}
+                      data-testid={ARCHIVE.objectCard}
+                      className="polaroid group text-left"
+                      data-caption={object.title}
+                    >
+                      <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary relative">
+                        <img
+                          src={object.image_url}
+                          alt={object.title}
+                          className="archive-image w-full h-full object-cover"
+                        />
+                        <div className="date-stamp">
+                          {object.date}
+                        </div>
+                      </div>
+                      <div className="p-4 space-y-2">
+                        <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                          {object.archive_id}
+                        </p>
+                      </div>
+                      <div className="polaroid-caption">
                         {object.title}
-                      </h3>
-                      <p className="text-sm text-archive-text/60 font-mono">
-                        {object.date}
-                      </p>
-                    </div>
-                  </button>
-                ))}
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             ) : (
-              <div className="text-center py-24 space-y-6">
+              <div className="text-center py-24 space-y-6 aged-edges p-12">
                 <p className="text-base text-archive-text/60">
                   No objects found in this category.
                 </p>
-                <p className="text-sm text-archive-text/40">
+                <p className="text-sm text-archive-text/40 handwritten">
                   Try exploring other categories.
                 </p>
               </div>

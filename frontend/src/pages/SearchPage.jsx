@@ -32,7 +32,7 @@ const SearchPage = () => {
   const totalResults = results.objects.length + results.voices.length;
   
   return (
-    <div className="min-h-screen pt-32 pb-24">
+    <div className="min-h-screen pt-32 pb-24 page-content">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-4xl mx-auto space-y-12">
           <h1 className="text-5xl md:text-6xl font-serif text-archive-text">
@@ -41,14 +41,14 @@ const SearchPage = () => {
           
           {/* Search Form */}
           <form onSubmit={handleSearch} className="space-y-6">
-            <div className="relative">
+            <div className="relative vintage-frame">
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 data-testid={SEARCH.searchInput}
                 placeholder="Search objects, collections, voices, metadata..."
-                className="w-full px-6 py-4 border border-archive-secondary bg-archive-secondary focus:border-archive-olive focus:outline-none text-base text-archive-text placeholder:text-archive-text/40"
+                className="w-full px-6 py-4 border border-archive-secondary bg-white focus:border-archive-olive focus:outline-none text-base text-archive-text placeholder:text-archive-text/40"
               />
               <button
                 type="submit"
@@ -60,7 +60,7 @@ const SearchPage = () => {
             </div>
             
             {isSearching && (
-              <p className="text-sm text-archive-text/60">Searching...</p>
+              <p className="text-sm text-archive-text/60 handwritten">Searching through archives...</p>
             )}
           </form>
           
@@ -69,7 +69,7 @@ const SearchPage = () => {
             <div data-testid={SEARCH.searchResults} className="space-y-12 pt-12">
               {totalResults > 0 ? (
                 <>
-                  <p className="text-base text-archive-text/70">
+                  <p className="text-base text-archive-text/70 photo-annotation">
                     Found {totalResults} result{totalResults !== 1 ? 's' : ''} for “{query}”
                   </p>
                   
@@ -86,14 +86,18 @@ const SearchPage = () => {
                             key={object.id}
                             to={`/archive/${object.id}`}
                             data-testid={ARCHIVE.objectCard}
-                            className="archival-drawer bg-transparent group"
+                            className="polaroid group"
+                            data-caption={object.title}
                           >
-                            <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary">
+                            <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary relative">
                               <img
                                 src={object.image_url}
                                 alt={object.title}
                                 className="archive-image w-full h-full object-cover"
                               />
+                              <div className="date-stamp">
+                                {object.date}
+                              </div>
                             </div>
                             <div className="p-6 space-y-3">
                               <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
@@ -102,9 +106,9 @@ const SearchPage = () => {
                               <h3 className="text-xl font-serif text-archive-text">
                                 {object.title}
                               </h3>
-                              <p className="text-sm text-archive-text/70 line-clamp-2">
-                                {object.description}
-                              </p>
+                            </div>
+                            <div className="polaroid-caption">
+                              {object.collection}
                             </div>
                           </Link>
                         ))}
@@ -124,24 +128,24 @@ const SearchPage = () => {
                           <Link
                             key={voice.id}
                             to="/voices"
-                            className="block border border-archive-secondary p-6 hover:border-archive-text/30 transition-smooth"
+                            className="block border border-archive-secondary p-6 hover:border-archive-text/30 transition-smooth vintage-shadow bg-white"
                           >
                             <div className="flex gap-6">
-                              <div className="w-20 h-20 bg-archive-secondary overflow-hidden flex-shrink-0">
+                              <div className="w-20 h-20 bg-archive-secondary overflow-hidden flex-shrink-0 photo-corners relative">
                                 <img
                                   src={voice.portrait_url}
                                   alt={voice.name}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-cover vintage-photo"
                                 />
                               </div>
                               <div className="space-y-2">
-                                <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                                <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
                                   {voice.archive_id}
                                 </p>
                                 <h3 className="text-xl font-serif text-archive-text">
                                   {voice.name}
                                 </h3>
-                                <p className="text-sm text-archive-text/70">
+                                <p className="text-sm text-archive-text/70 handwritten">
                                   {voice.role}
                                 </p>
                               </div>
@@ -153,11 +157,11 @@ const SearchPage = () => {
                   )}
                 </>
               ) : (
-                <div className="text-center py-24 space-y-6">
+                <div className="text-center py-24 space-y-6 aged-edges p-12">
                   <p className="text-base text-archive-text/60">
                     No results found for “{query}”
                   </p>
-                  <p className="text-sm text-archive-text/40">
+                  <p className="text-sm text-archive-text/40 handwritten">
                     Try different keywords or browse our collections.
                   </p>
                 </div>

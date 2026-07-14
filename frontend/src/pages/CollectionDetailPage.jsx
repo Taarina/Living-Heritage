@@ -41,10 +41,10 @@ const CollectionDetailPage = () => {
     : objects.filter(obj => obj.category === selectedCategory);
   
   return (
-    <div className="min-h-screen pt-32 pb-24">
+    <div className="min-h-screen pt-32 pb-24 page-content">
       <div className="max-w-7xl mx-auto px-6">
         <div className="space-y-8 mb-16">
-          <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+          <p className="text-xs font-mono tracking-widest uppercase text-archive-olive archive-stamp inline-block">
             {series}
           </p>
           
@@ -88,43 +88,48 @@ const CollectionDetailPage = () => {
           )}
         </div>
         
-        {/* Archive Objects Grid */}
+        {/* Archive Objects Grid with Film Strip Border */}
         {filteredObjects.length > 0 ? (
-          <div className="archive-grid">
-            {filteredObjects.map((object) => (
-              <button
-                key={object.id}
-                onClick={() => setSelectedObject(object)}
-                data-testid={ARCHIVE.objectCard}
-                className="archival-drawer bg-transparent group text-left"
-              >
-                <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary">
-                  <img
-                    src={object.image_url}
-                    alt={object.title}
-                    className="archive-image w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 space-y-3">
-                  <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
-                    {object.archive_id}
-                  </p>
-                  <h3 className="text-xl font-serif text-archive-text">
+          <div className="film-strip-border">
+            <div className="archive-grid">
+              {filteredObjects.map((object) => (
+                <button
+                  key={object.id}
+                  onClick={() => setSelectedObject(object)}
+                  data-testid={ARCHIVE.objectCard}
+                  className="polaroid group text-left"
+                  data-caption={object.title}
+                >
+                  <div className="archive-image-container aspect-[4/3] overflow-hidden bg-archive-secondary relative">
+                    <img
+                      src={object.image_url}
+                      alt={object.title}
+                      className="archive-image w-full h-full object-cover"
+                    />
+                    {/* Handwritten date stamp */}
+                    <div className="date-stamp">
+                      {object.date}
+                    </div>
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <p className="text-xs font-mono tracking-widest uppercase text-archive-olive">
+                      {object.archive_id}
+                    </p>
+                  </div>
+                  {/* Polaroid caption */}
+                  <div className="polaroid-caption">
                     {object.title}
-                  </h3>
-                  <p className="text-sm text-archive-text/60 font-mono">
-                    {object.date}
-                  </p>
-                </div>
-              </button>
-            ))}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="text-center py-24 space-y-6">
             <p className="text-base text-archive-text/60">
               No objects in this collection yet.
             </p>
-            <p className="text-sm text-archive-text/40">
+            <p className="text-sm text-archive-text/40 handwritten">
               Archive records will be added soon.
             </p>
           </div>
