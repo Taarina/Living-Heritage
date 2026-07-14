@@ -7,38 +7,65 @@
     transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Image hover effects */
+/* Image hover effects with vintage feel */
 .archive-image-container {
     overflow: hidden;
+    position: relative;
 }
 
 .archive-image {
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    filter: sepia(0.08) contrast(1.05);
 }
 
 .archive-image-container:hover .archive-image {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    filter: sepia(0.15) contrast(1.1);
 }
 
-/* Archival drawer effect */
+/* Archival drawer effect with vintage styling */
 .archival-drawer {
-    border: 1px solid rgba(34, 34, 34, 0.1);
-    transition: border-color 0.5s ease;
+    border: 1px solid rgba(112, 66, 20, 0.15);
+    transition: all 0.5s ease;
+    position: relative;
+    background: #F7F5F0;
+}
+
+.archival-drawer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(112, 66, 20, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .archival-drawer:hover {
-    border-color: rgba(34, 34, 34, 0.3);
+    border-color: rgba(112, 66, 20, 0.3);
+    box-shadow: 0 4px 16px rgba(112, 66, 20, 0.1);
 }
 
-/* Hero overlay */
+.archival-drawer:hover::before {
+    opacity: 1;
+}
+
+/* Hero overlay with nostalgic feel */
 .hero-overlay {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.35)
+    );
 }
 
 /* Audio player custom styles */
 .audio-progress {
     height: 1px;
-    background: #E8E2D8;
+    background: rgba(112, 66, 20, 0.2);
     position: relative;
 }
 
@@ -52,6 +79,7 @@
 .nav-blur {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(112, 66, 20, 0.1);
 }
 
 /* Modal/Viewer animations */
@@ -66,6 +94,21 @@
 
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
 }
 
 /* Archive grid layout */
@@ -95,7 +138,89 @@ button, input, textarea, select {
     border-radius: 0 !important;
 }
 
-/* Remove any default shadows */
-button, .card, .modal {
+/* Remove any default shadows except for vintage effects */
+button:not(.vintage-shadow), 
+.card:not(.vintage-shadow), 
+.modal:not(.vintage-shadow) {
     box-shadow: none !important;
+}
+
+/* Vintage shadow for special elements */
+.vintage-shadow {
+    box-shadow: 0 4px 12px rgba(112, 66, 20, 0.15) !important;
+}
+
+/* Film strip effect for collection grids */
+.film-strip {
+    position: relative;
+    padding: 16px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        transparent 8px,
+        rgba(112, 66, 20, 0.03) 8px,
+        rgba(112, 66, 20, 0.03) 100%
+    );
+}
+
+.film-strip::before,
+.film-strip::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(
+        to right,
+        rgba(112, 66, 20, 0.1) 0px,
+        rgba(112, 66, 20, 0.1) 8px,
+        transparent 8px,
+        transparent 16px
+    );
+}
+
+.film-strip::before {
+    top: 0;
+}
+
+.film-strip::after {
+    bottom: 0;
+}
+
+/* Stamp effect for archive IDs */
+.archive-stamp {
+    padding: 4px 12px;
+    border: 1px dashed rgba(112, 66, 20, 0.3);
+    background: rgba(112, 66, 20, 0.05);
+    display: inline-block;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.archive-stamp:hover {
+    transform: rotate(0deg);
+}
+
+/* Polaroid-style photo frame */
+.polaroid {
+    background: white;
+    padding: 12px;
+    padding-bottom: 48px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.polaroid::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
 }
