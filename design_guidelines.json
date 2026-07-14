@@ -1,0 +1,147 @@
+{
+  "theme": {
+    "concept": "Museum Reading Room & Digital Humanities Lab",
+    "tone": "Editorial, spacious, elegant, minimal, timeless, calm, accessible, premium.",
+    "forbidden_styles": [
+      "bright colours",
+      "heavy gradients",
+      "glassmorphism",
+      "excessive shadows",
+      "playful rounded cards",
+      "clutter",
+      "SaaS dashboard aesthetic",
+      "generic startup looks"
+    ]
+  },
+  "colors": {
+    "background": {
+      "name": "Warm Archival Paper",
+      "hex": "#F7F5F0",
+      "usage": "Primary page background for the entire application. Provides a tactile, historical paper feel."
+    },
+    "secondary": {
+      "name": "Secondary Archival",
+      "hex": "#E8E2D8",
+      "usage": "Surface backgrounds for archival drawers, search bars, transcript sections, and subtle hover states."
+    },
+    "text": {
+      "name": "Ink Black",
+      "hex": "#222222",
+      "usage": "Primary text color for headings, body, and UI icons. Do not use pure black (#000)."
+    },
+    "accent_1": {
+      "name": "Muted Olive",
+      "hex": "#59604C",
+      "usage": "Secondary buttons, subtle highlights, metadata tags, and active states."
+    },
+    "accent_2": {
+      "name": "Muted Gold",
+      "hex": "#B89B60",
+      "usage": "Primary action elements, highlight text, featured record borders, and special icon accents."
+    }
+  },
+  "typography": {
+    "font_families": {
+      "headings": "'Cormorant Garamond', serif",
+      "body": "'Inter', sans-serif",
+      "monospace": "'IBM Plex Mono', monospace"
+    },
+    "scale": {
+      "h1": "text-5xl md:text-6xl lg:text-7xl tracking-tight leading-none font-serif",
+      "h2": "text-3xl md:text-4xl lg:text-5xl tracking-tight font-serif",
+      "h3": "text-2xl md:text-3xl font-serif",
+      "body": "text-base md:text-lg leading-relaxed text-[#222222]/90 font-sans",
+      "archive_id": "text-xs md:text-sm tracking-[0.1em] uppercase font-mono text-[#59604C]",
+      "metadata_label": "text-xs tracking-widest uppercase font-sans text-[#222222]/60"
+    },
+    "rules": [
+      "Use Cormorant Garamond strictly for all structural headings.",
+      "Use IBM Plex Mono exclusively for Archive IDs, timestamps, and exact metadata values.",
+      "Never center-align large blocks of text; stick to left-alignment to respect editorial reading patterns."
+    ]
+  },
+  "layout_and_spacing": {
+    "spacing_system": "Generous and asymmetrical. Use padding scales like p-8, p-12, p-16, and p-24 to create breathing room.",
+    "container": "Max-width containers (max-w-7xl) centered on the page, with heavy horizontal padding on mobile (px-6).",
+    "grids": {
+      "collections": "Bento-style editorial grid. Mix tall portraits with wide landscape spans. grid-cols-1 md:grid-cols-12 gap-8 md:gap-12.",
+      "archive_viewer": "Split screen layout: large image viewer on one side (col-span-8), sticky metadata and details on the other (col-span-4)."
+    },
+    "borders": "Use sharp, 1px solid borders border-[#E8E2D8] or border-[#222222]/10. NO rounded corners greater than rounded-sm (2px max)."
+  },
+  "components": {
+    "archival_drawers": {
+      "description": "Collection items should look like physical archive drawers or editorial features, NOT standard web cards.",
+      "styles": "Flat backgrounds (bg-transparent or bg-[#E8E2D8]), 1px sharp borders, no shadows, hover effects should be subtle image scaling or border darkening."
+    },
+    "buttons": {
+      "primary": "Sharp edges, flat bg-[#B89B60] text-white hover:bg-[#222222] transition-colors duration-300 px-6 py-3",
+      "secondary": "Sharp edges, flat bg-transparent border border-[#222222] text-[#222222] hover:bg-[#E8E2D8] px-6 py-3"
+    },
+    "audio_player": {
+      "styles": "Minimalist. Avoid default HTML5 audio player. Use a clean play/pause button (lucide-react), a 1px progress line, and mono timestamps."
+    },
+    "navigation": {
+      "styles": "Solid or blur background. NEVER use completely transparent backgrounds over imagery to ensure accessibility. bg-[#F7F5F0]/90 backdrop-blur-md border-b border-[#E8E2D8]."
+    },
+    "hero_section": {
+      "overlay": "Maximum bg-black/30. Ensure text readability through subtle text-shadows if needed. Text should be minimal and elegant."
+    }
+  },
+  "motion": {
+    "philosophy": "Calm, slow, and intentional. Simulates turning pages or pulling out a drawer.",
+    "transitions": "Use duration-500 or duration-700 for page transitions and image fades.",
+    "hover_states": "Do not use bouncing or rapid scales. Use subtle color shifts or slow opacity changes."
+  },
+  "accessibility": {
+    "contrast": "Ensure text contrast meets APCA/WCAG AA standards, especially over the warm background.",
+    "testing": "All interactive elements (buttons, inputs, audio controls, archive links) MUST include a kebab-case data-testid attribute.",
+    "screen_readers": "Provide aria-labels for audio controls and image viewers."
+  },
+  "media_and_imagery": {
+    "guidelines": "Images are the core of the archive. Never stretch. Use object-cover for grids, object-contain for the archive viewer.",
+    "image_urls": {
+      "hero": {
+        "url": "https://images.unsplash.com/photo-1634316127530-4289556bad26",
+        "description": "Rajwada architecture hero image"
+      },
+      "rajwada_collection": {
+        "url": "https://images.unsplash.com/photo-1596901224267-67ca38199090",
+        "description": "Architectural interior and archways"
+      },
+      "lal_bagh_collection": {
+        "url": "https://images.unsplash.com/photo-1780245996835-90c0ac8bf4dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHw0fHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Vintage historical objects and room setup"
+      },
+      "voices_portrait_1": {
+        "url": "https://images.pexels.com/photos/29679833/pexels-photo-29679833.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Portrait of older Indian man (Hrishchand Mishra)"
+      },
+      "voices_portrait_2": {
+        "url": "https://images.pexels.com/photos/38281680/pexels-photo-38281680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Portrait of older Indian woman (oral history subject)"
+      },
+      "document_archive": {
+        "url": "https://images.unsplash.com/photo-1777620842997-bc178ed2599b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwaGlzdG9yaWNhbCUyMG9iamVjdHN8ZW58MHx8fHwxNzg0MDExMzExfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Archival documents and papers"
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "You are building a production-quality digital archive. Treat this like an application for a renowned museum.",
+    "Import Cormorant Garamond, Inter, and IBM Plex Mono via Google Fonts in index.html.",
+    "Do NOT use typical SaaS Shadcn components (no thick borders, no heavy shadows, no rounded corners). If using Shadcn, override styles to be sharp (rounded-none), flat, and minimal.",
+    "In the App.js/index.js, ensure the global background color is #F7F5F0 and text is #222222.",
+    "Do not center align paragraphs or text blocks; left-align to respect editorial typography rules.",
+    "Do not use AI assistant Emoji characters (like 🤖, 📚, 🏛️) as icons. Use lucide-react or phosphor-icons.",
+    "Implement the 'Voices' feature with a custom audio player UI (do not use default browser <audio> UI).",
+    "Add 'data-testid' attributes to all interactive elements for robust testing."
+  ],
+  "universal_guidelines_for_main_agent": [
+    "Create depth through layered design elements with z-index hierarchy, but avoid excessive drop-shadows. Rely on 1px borders and slight background shifts (#F7F5F0 vs #E8E2D8) instead.",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations. Static = dead. But keep them slow and elegant.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, custom cursors, and selection states separate good from extraordinary.",
+    "NEVER use placeholder URLs via.placeholder.com. Always use the provided image URLs."
+  ]
+}
